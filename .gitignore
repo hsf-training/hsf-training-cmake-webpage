@@ -8,4 +8,4 @@ _site
 .Rproj.user
 .Rhistory
 .RData
-
+.ruby-version

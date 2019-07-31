@@ -1,3 +1,5 @@
+[Modern CMake]: https://cliutils.gitlab.io/modern-cmake/
+[CMake Instructions]: https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
 [ci]: http://communityin.org/
