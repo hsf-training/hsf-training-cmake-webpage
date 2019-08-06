@@ -40,8 +40,9 @@ Welcome to the FIRST-HEP CMake tutorial! The aim of this tutorial is to cover th
 
 1. [Introduction](01-intro)
 2. [Building with CMake](02-building)
-3. Your first CMakeLists.txt file
-4. Variables explained
+3. [Your first CMakeLists.txt file](03-cmakelists)
+4. [Targets](04-targets)
+4. [Variables explained](05-variables)
 5. Project Structure
 6. Common problems and solutions
 7. Debugging

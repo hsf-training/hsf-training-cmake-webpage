@@ -10,8 +10,6 @@ keypoints:
 - "Use out-of-source builds"
 ---
 
-[Modern CMake intro/running]: https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html]
-
 # Building with CMake
 
 Before writing CMake, let's make sure you know how to run it to make things. This is true for almost all CMake projects, which is almost everything.
@@ -153,5 +151,7 @@ We've already mentioned verbose output for the build, but you can also see verbo
 > 
 > * Based on [Modern CMake intro/running][]
 {:.checklist}
+
+[Modern CMake intro/running]: https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html]
 
 {% include links.md %}
