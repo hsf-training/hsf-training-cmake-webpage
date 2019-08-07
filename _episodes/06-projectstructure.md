@@ -3,60 +3,73 @@ title: "Project Structure"
 teaching: 0
 exercises: 0
 questions:
-- "What is CMake?"
+- "What should my project look like?"
 objectives:
-- "Understand why CMake is used"
-- "Understand that CMake is not Make"
+- "Understand best practices for project structure"
 keypoints:
-- "CMake is a build system generator"
+- "Projects should have a standard structure"
 ---
 
-Building code is hard. You need long commands to build each part of your code; and you need do to this on many parts of your code.
 
-So people came up with **Build Systems**; these had ways set up dependencies (such as file A needs to be built to build file B), and ways to store the commands used to build each file or type of file. These are language independent (mostly), allowing you to setup builds of almost anything; you can use `make` to build LaTeX documents if you wish. Some common build systems include make (the classic pervasive one), ninja (a newer one from Google designed in the age of build system generators), and rake (Ruby make, nice syntax for Ruby users).
+For this section, we will be looking at the project in `code/03-structure`.
 
-However, this is:
+First, take a look at the main `CMakeLists.txt` file. This is an example of a nice project file in CMake 3.11, so enjoy it for a minute. Now let's look at specifics!
 
-* Mostly hand coded: You have to know all the proper commands
-* Platform/compiler dependent: You have to build the commands for each compiler.
-* Not aware of dependencies: If you require a library, you have to handle the paths, etc.
-* Hard to extend; if you want to use an IDE instead, good luck.
+### Protect project code
 
-Enter **Build System Generators** (hereby labeled BSGs for brevity). These understand the concepts of your programming language build; they usually support common compilers, languages, libraries, and output formats. These usually write a build system (or IDE) file and then let that do the actually build. The most popular BSG is CMake, which stands for Cross-platform Make. But as we've just shown, it is not really in the same category as make. Other BSGs include Meson (by Google), SCons (older Python system), Meson (very young Python system), and a few others. But CMake has unparalleled support by IDEs, libraries, and compilers.
+The parts of the project that only make sense if we are building this as the main project are protected; this allows the project to be included in a larger master project with `add_subdirectory`.
 
-Note that both CMake and Make are custom languages rather than being built in an existing language, like rake and SCons, etc. While it is nice to consolidate languages, the requirement that you have an external language installed and configured was too high for any of these to catch on for general use.
+### Testing handled in the main CMakeLists
 
-To recap, you should use CMake if:
+We have to do a little setup for testing in the main CMakeLists, because you can't run `enable_testing` from a subdirectory (and thereby `include(CTest)`). Also, notice that `BUILD_TESTING` does not turn on testing unless this is the main project.
 
-* You want to avoid hard-coding paths
-* You need to build a package on more than one computer
-* You want to use CI (continuous integration)
-* You need to support different OSs (maybe even just flavors of Unix)
-* You want to support multiple compilers
-* You want to use an IDE, but maybe not all of the time
-* You want to describe how your program is structured logically, not flags and commands
-* You want to use a library
-* You want to use tools, like Clang-Tidy, to help you code
-* You want to use a debugger
+### Finding packages
+
+We find packages in our main CMakeLists, then use them in subdirectories. We could have also put them in a file that was `inlude`d, such as `cmake/find_pakages.cmake`. If your CMake is new enough, you can even add a subdirectory with the find packages commands, but you have to set `IMPORTED_GLOBAL` on the targets you want to make available if you do that. For small to mid-size projects, the first option is most common, and large projects use the second option (currently).
+
+All the find packages here provide imported targets. If you do not have an imported target, **make one**! Never use the raw variables past the lines immediately following the `find_package` command.
+
+In this project, I use the new FetchContent to download several dependencies; although normally I prefer git submodules in `/extern`.
+
+### Source
+
+Now follow the `add_subdirectory` command to see the src folder, where a library is created.
+
+The headers are listed along with the sources in the `add_library` command. This would have been another way to do it in CMake 3.11+:
+
+```cmake
+add_library(modern_library)
+target_sources(modern_library
+  PRIVATE
+    lib.cpp
+  PUBLIC
+    ${HEADER_LIST}
+)
+```
+
+Notice that we have to use `target_include_directories`; just adding a header to the sources does not tell CMake what the correct include directory for it should be.
+
+We also set up the `target_link_libraries` with the appropriate targets.
+
+### App
+
+Now take a look at `apps/CMakeLists.txt`. This one is pretty simple, since all the leg work for using our library was done on the library target, as it should be.
 
 
-## (More) Modern CMake
+### Docs and Tests
 
-CMake has really changed dramatically since it was introduced around 2000. And, by the time of 2.8, it was available in lots of Linux Distribution package managers. However, this means there often are really old versions of CMake "available by default" in your environment. Please, please upgrade and design for newer CMake. No one likes writing or debugging build systems[^1]. Using a newer version can cut your build system code in less than half, reduce bugs, integrate better with external dependants, and more. Installing CMake can be as little as one line, and doesn't require sudo access. [See more info here](https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html).
 
-## Other sources
+Feel free to look at `docs` and `tests` for their `CMakeLists.txt`.
 
-There are some other places to find good information on the web. Here are some of them:
 
-* [Modern CMake][]: The book this tutorial derives from.
-* [The official help](https://cmake.org/cmake/help/latest/): Really amazing documentation. Nicely organized, great search, and you can toggle versions at the top. It just doesn't have a great "best practices tutorial", which is what this book tries to fill in.
-* [Effective Modern CMake](https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1): A great list of do's and don'ts.
-* [Embracing Modern CMake](https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/): A post with good description of the term
-* [It's time to do CMake Right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/): A nice set of best practices for Modern CMake projects.
-* [The Ultimate Guide to Modern CMake](https://rix0r.nl/blog/2015/08/13/cmake-guide/): A slightly dated post with similar intent.
-* [More Modern CMake](https://youtu.be/y7ndUhdQuU8): A great presentation from Meeting C++ 2018 that recommends CMake 3.12+. This talk makes calls CMake 3.0+ "Modern CMake" and CMake 3.12+ "More Modern CMake".
-* [toeb/moderncmake](https://github.com/toeb/moderncmake): A nice presentation and examples about CMake 3.5+, with intro to syntax through project organization
+> ## More reading
+>
+> * Based on [Modern CMake basics/structure][]
+{:.checklist}
 
-[Modern CMake]: https://cliutils.gitlab.io/modern-cmake/
+
+[Modern CMake basics/structure]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/structure.html
+
+
 
 {% include links.md %}
