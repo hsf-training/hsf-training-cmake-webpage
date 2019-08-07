@@ -1,5 +1,5 @@
 ---
-layout: workshop      # DON'T CHANGE THIS.
+layout: lesson      # DON'T CHANGE THIS.
 carpentry: "swc"      # what kind of Carpentry (must be either "lc" or "dc" or "swc").  
                       # Be sure to update the Carpentry type in _config.yml as well.  
 venue: "LBNL"         # brief name of host site without address (e.g., "Euphoric State University")
@@ -32,41 +32,29 @@ see the changes take effect locally.
 {% endif %}
 
 
-<h2 id="general">General Information</h2>
 
 Welcome to the FIRST-HEP CMake tutorial! The aim of this tutorial is to cover the basics of using CMake. This tutorial is based on the online book [Modern CMake][], with a focus on CMake 3.11+. This is almost what is [called the "More Modern" era](https://github.com/Bagira80/More-Modern-CMake) of CMake (which is 3.12+). We will cover the basics of making and building a project, and some details of design.
 
-## Lessons
+> ## Prereqs
+> 
+> On your computer, you need to have:
+> 
+> * `git`
+> * `cmake` (Version 3.11 or newer). See the [instructions here][CMake Instructions].
+> * A C++ compiler - system default is fine.
+> * `make` or `ninja`
+> 
+> Note that the ATLAS docker container has all of these things already. A quick and minimal docker works too:
+> 
+> ```bash
+> docker run --rm -it alpine
+> apk add git g++ cmake make
+> ```
+>
+> 
+> This does *not* make a volume, so you will lose whatever you do in here when it exits - that's probably a good thing mostly.
+>
+{: .prereq}
 
-1. [Introduction](01-intro)
-2. [Building with CMake](02-building)
-3. [Your first CMakeLists.txt file](03-cmakelists)
-4. [Targets](04-targets)
-4. [Variables explained](05-variables)
-5. Project Structure
-6. Common problems and solutions
-7. Debugging
-8. Finding packages
-9. ROOT
-10. BONUS: Installing a package
-
-
-## Prereqs
-
-On your computer, you need to have:
-
-* `git`
-* `cmake` (Version 3.11 or newer). See the [instructions here][CMake Instructions].
-* A C++ compiler - system default is fine.
-* `make` or `ninja`
-
-Note that the ATLAS docker container has all of these things already. A quick and minimal docker works too:
-
-```bash
-docker run --rm -it alpine
-apk add git g++ cmake make
-```
-
-This does *not* make a volume, so you will lose whatever you do in here when it exits - that's probably a good thing mostly.
 
 {% include links.md %}
