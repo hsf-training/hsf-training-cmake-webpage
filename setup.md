@@ -8,9 +8,9 @@ and will benefit you throughout your career.  However, if you are pressed for ti
 then **be sure to install and familiarize yourself with Docker**.
 
 
-## Install This Now! : [Docker](https://www.docker.com/)
+## Install This Now!: [Docker][]
 
-[Docker](https://www.docker.com/) is a powerful tool that allows you
+[Docker][] is a powerful tool that allows you
 to perform a virtualisation of your environment but completely in software.  It
 allows you to bundle up the installation of tools for use by others in a uniform way
 and we will be using it throughout this bootcamp.  Installing docker is absolutely
@@ -25,3 +25,4 @@ your decision to use the Windows operating system as a high energy physicist.*
 Useful docker containers:
 
 * `atlas/analysisbase:21.2.75`: See the [ATLAS-Docker preworkshop setup](https://adjackp.github.io/pre-workshopMaterial/02-atlasdocker/index.html).
+

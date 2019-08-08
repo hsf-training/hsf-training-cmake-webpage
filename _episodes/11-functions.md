@@ -1,62 +1,71 @@
 ---
 title: "Functions in CMake"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
-- "What is CMake?"
+- "How do I program in CMake?"
 objectives:
-- "Understand why CMake is used"
-- "Understand that CMake is not Make"
+- "Know how to make a macro or a function in CMake"
 keypoints:
-- "CMake is a build system generator"
+- "CMake can be very powerfully customized"
 ---
 
-Building code is hard. You need long commands to build each part of your code; and you need do to this on many parts of your code.
+Let's take a look at making a CMake macro or function. The only difference is in scope; a macro does not make a new scope, while a function does.
 
-So people came up with **Build Systems**; these had ways set up dependencies (such as file A needs to be built to build file B), and ways to store the commands used to build each file or type of file. These are language independent (mostly), allowing you to setup builds of almost anything; you can use `make` to build LaTeX documents if you wish. Some common build systems include make (the classic pervasive one), ninja (a newer one from Google designed in the age of build system generators), and rake (Ruby make, nice syntax for Ruby users).
+```cmake
+function(EXAMPLE_FUNCTION AN_ARGUMENT)
+    set(${AN_ARGUMENT}_LOCAL "I'm in the local scope")
+    set(${AN_ARGUMENT}_PARENT "I'm in the parent scope" PARENT_SCOPE)
+endfunction()
 
-However, this is:
+example_function() # Error
+example_function(ONE)
+example_function(TWO THREE) # Not error
 
-* Mostly hand coded: You have to know all the proper commands
-* Platform/compiler dependent: You have to build the commands for each compiler.
-* Not aware of dependencies: If you require a library, you have to handle the paths, etc.
-* Hard to extend; if you want to use an IDE instead, good luck.
+message(STATUS "${ONE_LOCAL}") # What does this print?
+message(STATUS "${ONE_PARENT}") # What does this print?
+```
 
-Enter **Build System Generators** (hereby labeled BSGs for brevity). These understand the concepts of your programming language build; they usually support common compilers, languages, libraries, and output formats. These usually write a build system (or IDE) file and then let that do the actually build. The most popular BSG is CMake, which stands for Cross-platform Make. But as we've just shown, it is not really in the same category as make. Other BSGs include Meson (by Google), SCons (older Python system), Meson (very young Python system), and a few others. But CMake has unparalleled support by IDEs, libraries, and compilers.
-
-Note that both CMake and Make are custom languages rather than being built in an existing language, like rake and SCons, etc. While it is nice to consolidate languages, the requirement that you have an external language installed and configured was too high for any of these to catch on for general use.
-
-To recap, you should use CMake if:
-
-* You want to avoid hard-coding paths
-* You need to build a package on more than one computer
-* You want to use CI (continuous integration)
-* You need to support different OSs (maybe even just flavors of Unix)
-* You want to support multiple compilers
-* You want to use an IDE, but maybe not all of the time
-* You want to describe how your program is structured logically, not flags and commands
-* You want to use a library
-* You want to use tools, like Clang-Tidy, to help you code
-* You want to use a debugger
+We see the basics of functions above. You can specify required positional arguments after the name; all other arguments are set in `ARGN`; `ARGV` holds all arguments, even the listed positional ones. Since you name variables with strings, you can set variables using names. This is enough to recreate any of the CMake commands. But there's one more thing...
 
 
-## (More) Modern CMake
+### Parsing arguments
 
-CMake has really changed dramatically since it was introduced around 2000. And, by the time of 2.8, it was available in lots of Linux Distribution package managers. However, this means there often are really old versions of CMake "available by default" in your environment. Please, please upgrade and design for newer CMake. No one likes writing or debugging build systems[^1]. Using a newer version can cut your build system code in less than half, reduce bugs, integrate better with external dependants, and more. Installing CMake can be as little as one line, and doesn't require sudo access. [See more info here](https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html).
+You'll have noticed that there are conventions to calling CMake commands; most commands have all-caps keywords that take 0, 1, or an unlimited number of arguments. This handling is standardized in the [`cmake_parse_arguments`](https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html) command. Here's how it works:
 
-## Other sources
+```cmake
+function(COMPLEX)
+    cmake_parse_arguments(
+        COMPLEX_PREFIX
+        "SINGLE;ANOTHER"
+        "ONE_VALUE;ALSO_ONE_VALUE"
+        "MULTI_VALUES"
+        ${ARGN}
+    )
+endfunction()
 
-There are some other places to find good information on the web. Here are some of them:
+complex(SINGLE ONE_VALUE value MULTI_VALUES some other values)
+```
+The first argument is a prefix that will be attached to the results. The next three arguments are lists, one with single keywords (no arguments), one with keywords that take one argument each, and one with keywords that take any number of arguments. The final argument is `${ARGN}` or `${ARGV}`, without quotes (it will be expanded here). If you are in a function and not a macro, you can use `PARSE_ARGV <N>` at the start of the call, where N is the number of positional arguments to expect. This method allows simicolons in the arguments.
 
-* [Modern CMake][]: The book this tutorial derives from.
-* [The official help](https://cmake.org/cmake/help/latest/): Really amazing documentation. Nicely organized, great search, and you can toggle versions at the top. It just doesn't have a great "best practices tutorial", which is what this book tries to fill in.
-* [Effective Modern CMake](https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1): A great list of do's and don'ts.
-* [Embracing Modern CMake](https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/): A post with good description of the term
-* [It's time to do CMake Right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/): A nice set of best practices for Modern CMake projects.
-* [The Ultimate Guide to Modern CMake](https://rix0r.nl/blog/2015/08/13/cmake-guide/): A slightly dated post with similar intent.
-* [More Modern CMake](https://youtu.be/y7ndUhdQuU8): A great presentation from Meeting C++ 2018 that recommends CMake 3.12+. This talk makes calls CMake 3.0+ "Modern CMake" and CMake 3.12+ "More Modern CMake".
-* [toeb/moderncmake](https://github.com/toeb/moderncmake): A nice presentation and examples about CMake 3.5+, with intro to syntax through project organization
+Inside the function, you'll find:
 
-[Modern CMake]: https://cliutils.gitlab.io/modern-cmake/
+```cmake
+COMPLEX_PREFIX_SINGLE = TRUE
+COMPLEX_PREFIX_ANOTHER = FALSE
+COMPLEX_PREFIX_ONE_VALUE = "value"
+COMPLEX_PREFIX_ALSO_ONE_VALUE = <UNDEFINED>
+COMPLEX_PREFIX_MULTI_VALUES = "some;other;values"
+COMPLEX_PREFIX_UNPARSED_ARGUMENTS = <UNDEFINED>
+```
+
+The simicolons here are an explicit CMake list; you can use other methods to make this simpler at the cost of more lines of code.
+
+> ## More reading
+> 
+> * Based on [Modern CMake basics/functions][]
+{:.checklist}
+
+[Modern CMake basics/functions]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/functions.html]
 
 {% include links.md %}

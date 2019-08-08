@@ -57,6 +57,4 @@ There are some other places to find good information on the web. Here are some o
 * [More Modern CMake](https://youtu.be/y7ndUhdQuU8): A great presentation from Meeting C++ 2018 that recommends CMake 3.12+. This talk makes calls CMake 3.0+ "Modern CMake" and CMake 3.12+ "More Modern CMake".
 * [toeb/moderncmake](https://github.com/toeb/moderncmake): A nice presentation and examples about CMake 3.5+, with intro to syntax through project organization
 
-[Modern CMake]: https://cliutils.gitlab.io/modern-cmake/
-
 {% include links.md %}

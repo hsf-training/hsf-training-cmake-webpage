@@ -10,6 +10,10 @@ keypoints:
 - "Use out-of-source builds"
 ---
 
+# Installing CMake
+
+It's usually only 1 or so lines to install a recent version of CMake almost anywhere; see [CMake Instructions][].
+
 # Building with CMake
 
 Before writing CMake, let's make sure you know how to run it to make things. This is true for almost all CMake projects, which is almost everything.
