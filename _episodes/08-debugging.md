@@ -1,62 +1,96 @@
 ---
 title: "Debugging"
-teaching: 0
-exercises: 0
+teaching: 10
+exercises: 10
 questions:
-- "What is CMake?"
+- "How to I debug my code?"
 objectives:
-- "Understand why CMake is used"
-- "Understand that CMake is not Make"
+- "Know how to find problems in CMake"
+- "Know how to set up builds for debugging"
 keypoints:
-- "CMake is a build system generator"
+- "CMake is great for different builds"
 ---
 
-Building code is hard. You need long commands to build each part of your code; and you need do to this on many parts of your code.
-
-So people came up with **Build Systems**; these had ways set up dependencies (such as file A needs to be built to build file B), and ways to store the commands used to build each file or type of file. These are language independent (mostly), allowing you to setup builds of almost anything; you can use `make` to build LaTeX documents if you wish. Some common build systems include make (the classic pervasive one), ninja (a newer one from Google designed in the age of build system generators), and rake (Ruby make, nice syntax for Ruby users).
-
-However, this is:
-
-* Mostly hand coded: You have to know all the proper commands
-* Platform/compiler dependent: You have to build the commands for each compiler.
-* Not aware of dependencies: If you require a library, you have to handle the paths, etc.
-* Hard to extend; if you want to use an IDE instead, good luck.
-
-Enter **Build System Generators** (hereby labeled BSGs for brevity). These understand the concepts of your programming language build; they usually support common compilers, languages, libraries, and output formats. These usually write a build system (or IDE) file and then let that do the actually build. The most popular BSG is CMake, which stands for Cross-platform Make. But as we've just shown, it is not really in the same category as make. Other BSGs include Meson (by Google), SCons (older Python system), Meson (very young Python system), and a few others. But CMake has unparalleled support by IDEs, libraries, and compilers.
-
-Note that both CMake and Make are custom languages rather than being built in an existing language, like rake and SCons, etc. While it is nice to consolidate languages, the requirement that you have an external language installed and configured was too high for any of these to catch on for general use.
-
-To recap, you should use CMake if:
-
-* You want to avoid hard-coding paths
-* You need to build a package on more than one computer
-* You want to use CI (continuous integration)
-* You need to support different OSs (maybe even just flavors of Unix)
-* You want to support multiple compilers
-* You want to use an IDE, but maybe not all of the time
-* You want to describe how your program is structured logically, not flags and commands
-* You want to use a library
-* You want to use tools, like Clang-Tidy, to help you code
-* You want to use a debugger
+Debugging is easy with CMake. We'll cover two forms of debugging: debugging your CMake code, and debugging your C++ code.
 
 
-## (More) Modern CMake
+# CMake debugging
 
-CMake has really changed dramatically since it was introduced around 2000. And, by the time of 2.8, it was available in lots of Linux Distribution package managers. However, this means there often are really old versions of CMake "available by default" in your environment. Please, please upgrade and design for newer CMake. No one likes writing or debugging build systems[^1]. Using a newer version can cut your build system code in less than half, reduce bugs, integrate better with external dependants, and more. Installing CMake can be as little as one line, and doesn't require sudo access. [See more info here](https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html).
+First, let's look at ways to debug a CMakeLists or other CMake file.
 
-## Other sources
+### Printing variables
 
-There are some other places to find good information on the web. Here are some of them:
+The time honored method of print statements looks like this in CMake:
 
-* [Modern CMake][]: The book this tutorial derives from.
-* [The official help](https://cmake.org/cmake/help/latest/): Really amazing documentation. Nicely organized, great search, and you can toggle versions at the top. It just doesn't have a great "best practices tutorial", which is what this book tries to fill in.
-* [Effective Modern CMake](https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1): A great list of do's and don'ts.
-* [Embracing Modern CMake](https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/): A post with good description of the term
-* [It's time to do CMake Right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/): A nice set of best practices for Modern CMake projects.
-* [The Ultimate Guide to Modern CMake](https://rix0r.nl/blog/2015/08/13/cmake-guide/): A slightly dated post with similar intent.
-* [More Modern CMake](https://youtu.be/y7ndUhdQuU8): A great presentation from Meeting C++ 2018 that recommends CMake 3.12+. This talk makes calls CMake 3.0+ "Modern CMake" and CMake 3.12+ "More Modern CMake".
-* [toeb/moderncmake](https://github.com/toeb/moderncmake): A nice presentation and examples about CMake 3.5+, with intro to syntax through project organization
+```cmake
+message(STATUS "MY_VARIABLE=${MY_VARIABLE}")
+```
 
-[Modern CMake]: https://cliutils.gitlab.io/modern-cmake/
+However, a built in module makes this even easier:
+
+```cmake
+include(CMakePrintHelpers)
+cmake_print_variables(MY_VARIABLE)
+```
+
+If you want to print out a property, this is much, much nicer! Instead of getting the properties one by one of of each target (or other item with properties, such as `SOURCES`, `DIRECTORIES`, `TESTS`, or `CACHE_ENTRIES` - global properties seem to be missing for some reason), you can simply list them and get them printed directly:
+
+```cmake
+cmake_print_properties(
+    TARGETS my_target
+    PROPERTIES POSITION_INDEPENDENT_CODE
+)
+```
+
+
+### Tracing a run
+
+Have you wanted to watch exactly what happens in your CMake file, and when? The `--trace-source="filename"` feature is fantastic. Every line run in the file that you give will be echoed to the screen when it is run, letting you follow exactly what is happening. There are related options as well, but they tend to bury you in output.
+
+> ## Watching a build
+> 
+> Let's try this out. Let's go to the code/01-debug folder and configure with trace mode on:
+> 
+> ```bash
+> cmake -S . -B build --trace-source=CMakeLists.txt
+> ```
+> 
+> Try adding `--trace-expand` too. What is the difference? How about replacing `--trace-source=CMakeLists.txt` with `--trace`?
+{.:challenge}
+
+# C++ debugging
+
+To run a C++ debugger, you need to set several flags in your build. CMake does this for you with "build types". You can run CMake with `CMAKE_BUILD_TYPE=Debug` for full debugging, or `RelWithDebInfo` for a release build with some extra debug info. You can also use `Release` for an optimized release build, or `MinSizeRel` for a minimum size release (which I've never used). 
+
+> ## Debug example
+> 
+> Let's try it. Go to `code/01=4-debug`, and build in debug mode. Our program has a bug. Let's try it out in a debugger.
+> 
+> ```bash
+> cmake -S . -B build-debug
+> cmake --build build-debug
+> gdb build-debug/simple_example
+> ```
+> 
+> Now, since we think there's a problem in `my_sin`, let's set a breakpoint in `my_sin`. Note that I'm providing the gdb commands on the left, and lldb commands on the right.
+> 
+> ```
+> # GDB                # LLDB
+> break my_sin         breakpoint set --name my_sin
+> r                    r
+> ```
+> 
+> Now, let's watch what happens to the sign variable. Set a watchpoint:
+> 
+> ```
+> # GDB                # LLDB
+> watch sign           watchpoint set variable sign
+> c                    c
+> ```
+> 
+> Keep running continue (`c`). Do you see the problem?
+{:.challenge}
+
+Note that CMake defaults to an "empty" build type, which is neither optimized nor debug. You can [fix this manually](https://cliutils.gitlab.io/modern-cmake/chapters/features.html), or always specify a build type. The empty build type uses the environment variables `CFLAGS` and `CXXFLAGS`, allowing CMake to integrate with Linux package managers. Otherwise, you can set the release and debug flags separately.
 
 {% include links.md %}
