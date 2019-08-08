@@ -1,5 +1,5 @@
 ---
-title: "Your first CMakeLists.txt file"
+title: "Working with Targets"
 teaching: 10
 exercises: 20
 questions:
@@ -31,7 +31,7 @@ Another type of target is a library:
 add_library(mylibrary simplelib.cpp)
 ```
 
-You can add the keywords `STATIC`, `SHARED`, or `MODULE` if you know what kind of library you want to make; the default is sortof an "auto" library that is user selectable with `BUILD_SHARED_LIBS`. 
+You can add the keywords `STATIC`, `SHARED`, or `MODULE` if you know what kind of library you want to make; the default is sortof an "auto" library that is user selectable with `BUILD_SHARED_LIBS`.
 
 You can make non-built libraries too. More on that later, once we see what we can do with targets.
 
@@ -57,18 +57,18 @@ Figure 1: Example of PUBLIC, PRIVATE, and INTERFACE. `myprogram` will build the 
 There are two collections of properties on every target that can be filled with values; the "private" properties control what happens when you build that target, and the "interface" properties tell targets linked to this one what to do when building. The `PUBLIC` keyword fills both property fields at the same time.
 
 > ## Try it out
-> 
+>
 > Get this repository and go to the example. Try to write a CMakeLists that will correctly build.
-> 
+>
 > ```bash
 > git clone https://github.com/henryiii/cmake_workshop.git
 > cd cmake_workshop/code/01-simple
 > ```
-> 
+>
 > The files here are:
 > * simple_lib.cpp: Must be compiled with `MYLIB_PRIVATE` and `MYLIB_PUBLIC` defined.
 > * simple_example.cpp: Must be compiled with `MYLIB_PUBLIC` defined, but not `MYLIB_PRIVATE`
-> 
+>
 > Use `target_compile_definitions(<target> <private or public> <definition(s)>)` to set the definitions on `simple_lib`.
 {:.challenge}
 
@@ -99,7 +99,7 @@ Notice you didn't need to add any source files. Now you can set `INTERFACE` prop
 The second situation is if you have a pre-built library that you want to use. This is called an imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries can also be interface libraries, they can built and modified using the same syntax as other libraries (starting in CMake 3.11), and they can have `::` in thier name. (`ALIAS` libraries, which simply rename some other library, are also allowed to have `::`). Most of the time you will get imported libraries from other places, and will not be making your own.
 
 > ## More reading
-> 
+>
 > * Based on [Modern CMake basics][]
 > * Also see [CMake's docs](https://cmake.org/cmake/help/latest/index.html)
 {:.checklist}
