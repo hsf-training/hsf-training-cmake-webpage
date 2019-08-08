@@ -1,7 +1,7 @@
 ---
 title: "Variables explained"
 teaching: 10
-exercises: 20
+exercises: 10
 questions:
 - "How do variables work?"
 objectives:
