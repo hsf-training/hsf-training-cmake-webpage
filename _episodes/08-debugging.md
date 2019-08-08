@@ -3,7 +3,7 @@ title: "Debugging"
 teaching: 10
 exercises: 10
 questions:
-- "How to I debug my code?"
+- "How to I debug everything?"
 objectives:
 - "Know how to find problems in CMake"
 - "Know how to set up builds for debugging"

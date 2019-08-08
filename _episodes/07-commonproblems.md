@@ -3,7 +3,7 @@ title: "Common Problems and Solutions"
 teaching: 5
 exercises: 0
 questions:
-- "What could go wrong?"
+- "What could go possibly wrong?"
 objectives:
 - "Identify some common mistakes"
 - "Fix problems"
@@ -27,7 +27,7 @@ Solution: Either set a high minimum version or use the version range feature and
 
 ## 2: Building inplace
 
-CMake should never be used to build inplace; but it's easy to accidentally do so. And once it happens, you have to manually clean the directory before you can do an out-of-source build again. Because of this, while you can run `cmake .` from the build directory after the initial run, it's best to avoid this form just in case you forget and run it from the source directory. Also, you can add the following check to your CMakeLists.txt:
+CMake should never be used to build in-place; but it's easy to accidentally do so. And once it happens, you have to manually clean the directory before you can do an out-of-source build again. Because of this, while you can run `cmake .` from the build directory after the initial run, it's best to avoid this form just in case you forget and run it from the source directory. Also, you can add the following check to your CMakeLists.txt:
 
 ```cmake
 ### Require out-of-source builds

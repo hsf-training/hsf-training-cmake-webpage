@@ -44,11 +44,22 @@ Welcome to the FIRST-HEP CMake tutorial! The aim of this tutorial is to cover th
 > * A C++ compiler - system default is fine.
 > * `make` or `ninja`
 > 
-> Note that the ATLAS docker container has all of these things already. A quick and minimal docker works too:
+> Note that the ATLAS docker container has all of these things already.
+>
+> ```bash
+> docker run --rm -it atlas/analysisbase:21.2.75 bash
+> source release_setup.sh
+> git clone https://github.com/henryiii/cmake_workshop.git
+> cd cmake_workshop
+> ```
+> 
+> A quick and minimal docker works too:
 > 
 > ```bash
 > docker run --rm -it alpine
 > apk add git g++ cmake make
+> git clone https://github.com/henryiii/cmake_workshop.git
+> cd cmake_workshop
 > ```
 >
 > 

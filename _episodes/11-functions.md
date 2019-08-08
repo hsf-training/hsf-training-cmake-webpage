@@ -3,7 +3,7 @@ title: "Functions in CMake"
 teaching: 10
 exercises: 0
 questions:
-- "How do I program in CMake?"
+- "How do I write my own CMake commands?"
 objectives:
 - "Know how to make a macro or a function in CMake"
 keypoints:

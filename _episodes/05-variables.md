@@ -45,7 +45,7 @@ Here we see the set command, which sets a variable, and the message command, whi
 
 ## Cached variables
 
-Now, let's look at cached variables; a key ingredient in all CMake builds. In a build, cached variables are set in the command line or in a graphical tool (such as ccmake, cmake-gui), and then written to a file called `CMakeCache.txt`. When you rerun, the cache is read in before starting, so that CMake "remembers" what you ran it with. For our example, we will use CMake in script mode, and that will not write out a cache, which makes it easier to play with. Feel free to look back at the example you built in the last lesson and investigate the `CMakeCache.txt` file in your build directory there. Things like the compiler location, as discovered or set on the first run, are cached.
+Now, let's look at cached variables; a key ingredient in all CMake builds. In a build, cached variables are set in the command line or in a graphical tool (such as `ccmake`, `cmake-gui`), and then written to a file called `CMakeCache.txt`. When you rerun, the cache is read in before starting, so that CMake "remembers" what you ran it with. For our example, we will use CMake in script mode, and that will not write out a cache, which makes it easier to play with. Feel free to look back at the example you built in the last lesson and investigate the `CMakeCache.txt` file in your build directory there. Things like the compiler location, as discovered or set on the first run, are cached.
 
 
 Here's what a cached variable looks like:

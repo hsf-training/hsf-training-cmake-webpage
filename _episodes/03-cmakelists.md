@@ -3,7 +3,7 @@ title: "Your first CMakeLists.txt file"
 teaching: 10
 exercises: 10
 questions:
-- "What is the minimum required CMakeLists?"
+- "How little can I get away with in my CMakeLists?"
 objectives:
 - "Know how to write a CMakeLists.txt file"
 keypoints:
@@ -29,7 +29,7 @@ This file can be compiled with C or C++.
 
 ## Starting off
 
-This is the simpilest possible CMakeLists:
+This is the simplest possible CMakeLists:
 
 ```cmake
 cmake_minimum_required(VERSION 3.11)

@@ -56,7 +56,7 @@ This will make a **build directory**, change to it, then run the `cmake` command
 > cmake --build .
 > ```
 > 
-> to build without refering to the build tool itself.
+> to build without referring to the build tool itself.
 >
 > A very new way to work with CMake and build directories is to run CMake from the source directory:
 >
@@ -90,7 +90,7 @@ cmake --help
 
 And you can pick a tool with `-G"My Tool"` (quotes only needed if spaces are in the tool name). You should pick a tool on your first CMake call in a directory, just like the compiler. Feel free to have several build directories, like `build` and `buildXcode`.
 You can set the environment variable `CMAKE_GENERATOR` to control the default generator (CMake 3.15+).
-Note that makefiles will only run in parallel if you explicilty pass a number of threads, such as `make -j2`, while Ninja will automatically run in parallel. You can directly pass a parallelization option such as `-j2` to the `cmake --build .` command in recent versions of CMake.
+Note that makefiles will only run in parallel if you explicitly pass a number of threads, such as `make -j2`, while Ninja will automatically run in parallel. You can directly pass a parallelization option such as `-j2` to the `cmake --build .` command in recent versions of CMake.
 
 ## Setting options
 
@@ -110,13 +110,13 @@ You can also build just a part of a build by specifying a target, such as the na
 
 ## Options
 
-CMake has support for cached options. A Variable in CMake can be marked as "cached", which means it will be written to the cache (a file called `CMakeCache.txt` in the build directory) when it is incountered. You can preset (or change) the value of a cached option on the command line with `-D`. When CMake looks for a cached variable, it will use the existing value and will not overwrite it.
+CMake has support for cached options. A Variable in CMake can be marked as "cached", which means it will be written to the cache (a file called `CMakeCache.txt` in the build directory) when it is encountered. You can preset (or change) the value of a cached option on the command line with `-D`. When CMake looks for a cached variable, it will use the existing value and will not overwrite it.
 
 ### Standard options
 
 These are common CMake options to most packages:
 
-* `-DCMAKE_BUILD_TYPE=` Pick from Release, RelWithDebInfo, Debug, or sometimes more.
+* `-DCMAKE_BUILD_TYPE=` Pick from `Release`, `RelWithDebInfo`, `Debug`, or sometimes more.
 * `-DCMAKE_INSTALL_PREFIX=` The location to install to. System install on UNIX would often be `/usr/local` (the default), user directories are often `~/.local`, or you can pick a folder.
 * `-DBUILD_SHARED_LIBS=` You can set this `ON` or `OFF` to control the default for shared libraries (the author can pick one vs. the other explicitly instead of using the default, though)
 * `-DBUILD_TESTING=` This is a common name for enabling tests, not all packages use it, though, sometimes with good reason.
