@@ -19,7 +19,7 @@ For this exercise, we will just directly run a CMake Script, instead of running 
 cmake -P example.cmake
 ```
 
-This way, we don't have so many little builds sitting around. 
+This way, we don't have so many little builds sitting around.
 
 ## Local variables
 
@@ -34,12 +34,12 @@ message(STATUS "${MY_VARIABLE}")
 Here we see the set command, which sets a variable, and the message command, which prints out a string. We are printing a `STATUS` message - there are other types (many other types in CMake 3.15+).
 
 > ## More about variables
-> 
+>
 > Try the following:
 > * Remove the quotes in set. What happens?
 > * Remove the quotes in message. What happens? Why?
 > * Try setting a cached variable using `-DMY_VARIABLE=something` *before* the `-P`. Which variable is shown?
-> 
+>
 {:.challenge}
 
 
@@ -81,6 +81,13 @@ You can get environment variables with `$ENV{name}`. Properties are a form of va
 > Use `include(CMakePrintHelpers)` to add the useful commands `cmake_print_properties` and `cmake_print_variables` to save yourself some typing when debugging variables and properties.
 {:.callout}
 
+## Target properties and variables
+
+You have seen targets; they have properties attached that control their behavior. Many of these
+properties, such as `CXX_EXTENSIONS`, have a matching variable that starts with `CMAKE_`, such as
+`CMAKE_CXX_EXTENSIONS`, that will be used to initialize them. So you can using set property on each
+target by setting a variable before making the targets.
+
 ## Globbing
 
 There are several commands that help with strings, files, lists, and the like. Let's take a quick look at one of the most interesting: glob.
@@ -94,7 +101,7 @@ This will make a list of all files that match the pattern and put it into `OUTPU
 When you rerun the *build* step (not the configure step), then unless you set`CONFIGURE_DEPENDS`, your build tool will not check to see if you have added any new files that now pass the glob. This is the reason poorly written CMake projects often have issues when you are trying to add files; some people are in the habit of rerunning `cmake` before every build because of this. You shouldn't ever have to manually reconfigure; the build tool will rerun CMake as needed with this one exception. If you add `CONFIGURE_DEPENDS`, then *most* build tools will actually start checking glob too. The classic rule of CMake was "never glob"; the new rule is "never glob, but if you have to, add `CONFIGURE_DEPENDS`".
 
 > ## More reading
-> 
+>
 > * Based on [Modern CMake basics/variables][]
 > * Also see [CMake's docs](https://cmake.org/cmake/help/latest/index.html)
 {:.checklist}
