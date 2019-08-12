@@ -3,7 +3,7 @@ title: "Debugging"
 teaching: 10
 exercises: 10
 questions:
-- "How to I debug everything?"
+- "How do I debug everything?"
 objectives:
 - "Know how to find problems in CMake"
 - "Know how to set up builds for debugging"
@@ -49,7 +49,7 @@ Have you wanted to watch exactly what happens in your CMake file, and when? The 
 
 > ## Watching a build
 > 
-> Let's try this out. Let's go to the code/01-debug folder and configure with trace mode on:
+> Let's try this out. Let's go to the code/04-debug folder and configure with trace mode on:
 > 
 > ```bash
 > cmake -S . -B build --trace-source=CMakeLists.txt
@@ -64,7 +64,7 @@ To run a C++ debugger, you need to set several flags in your build. CMake does t
 
 > ## Debug example
 > 
-> Let's try it. Go to `code/01=4-debug`, and build in debug mode. Our program has a bug. Let's try it out in a debugger.
+> Let's try it. Go to `code/04-debug`, and build in debug mode. Our program has a bug. Let's try it out in a debugger.
 > 
 > ```bash
 > cmake -S . -B build-debug

@@ -3,7 +3,7 @@ title: "ROOT"
 teaching: 10
 exercises: 10
 questions:
-- "How to I use ROOT?"
+- "How do I use ROOT?"
 objectives:
 - "Use ROOT a couple of different ways"
 keypoints:

@@ -16,6 +16,7 @@ keypoints:
 For this exercise, we will just directly run a CMake Script, instead of running `CMakeLists.txt`. The command to do so is:
 
 ```bash
+# Assuming you have a file called example.cmake:
 cmake -P example.cmake
 ```
 
@@ -107,4 +108,4 @@ When you rerun the *build* step (not the configure step), then unless you set`CO
 {:.checklist}
 
 
-[Modern CMake basics/variable]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/variables.html
+[Modern CMake basics/variables]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/variables.html

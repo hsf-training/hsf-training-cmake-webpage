@@ -58,7 +58,7 @@ This will make a **build directory**, change to it, then run the `cmake` command
 > 
 > to build without referring to the build tool itself.
 >
-> A very new way to work with CMake and build directories is to run CMake from the source directory:
+> A very new way to work with CMake (3.13+) and build directories is to run CMake from the source directory:
 >
 > ```bash
 > cmake -S . -B build
@@ -75,7 +75,11 @@ This will make a **build directory**, change to it, then run the `cmake` command
 Selecting a compiler must be done on the first run in an empty directory. It's not CMake syntax per se, but you might not be familiar with it. To pick Clang:
 
 ```bash
+# From build directory
 CC=clang CXX=clang++ cmake ..
+
+# Or from source directory (CMake 3.13+)
+CC=clang CXX=clang++ cmake -S . -B build
 ```
 
 That sets the environment variables in bash for CC and CXX, and CMake will respect those variables. This sets it just for that one line, but that's the only time you'll need those; afterwards CMake continues to use the paths it deduces from those values.
@@ -104,7 +108,7 @@ Again, not really CMake, but if you are using a command line build tool like `ma
 VERBOSE=1 make
 ```
 
-You can actually write `make VERBOSE=1`, and make will also do the right thing, though that's a feature of `make` and not the command line in general.
+You can actually write `make VERBOSE=1`, and make will also do the right thing, though that's a feature of `make` and not the command line in general. In CMake 3.14, verbose mode was added to the build options, so `cmake --build . -v` will activate the verbose mode of your build tool.
 
 You can also build just a part of a build by specifying a target, such as the name of a library or executable you've defined in CMake, and make will just build that target.
 
