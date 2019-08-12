@@ -39,7 +39,7 @@ You can make non-built libraries too. More on that later, once we see what we ca
 
 Once you have several targets, you can discribe the relationship between them with `target_link_libraries` and a keyword; one of `PUBLIC`, `PRIVATE`, and `INTERFACE`.
 
-![Example of Public and Private inheritance](/fig/04-mermaid-libs.svg){:height="500px" }
+![Example of Public and Private inheritance](../fig/04-mermaid-libs.svg){:height="500px" }
 
 <!--
 Spaces added to -- > to allow comment to continue

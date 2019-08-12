@@ -22,11 +22,11 @@ Before writing CMake, let's make sure you know how to run it to make things. Thi
 > Let's get a project and try to build it. For fun, let's build CLI11:
 > 
 > ```bash
-> git clone --recurse-submodules https://github.com/CLIUtils/CLI11.git
+> git clone --recursive https://github.com/CLIUtils/CLI11.git
 > cd CLI11
 > ```
 > 
-> Note: the `--recurse-submodules` flag just tells get to download any submodules too, if you haven't seen that before. If you are short on space, use `--recurse-submodules=extern/googletest` to only get the one submodule we care about.
+> Note: the `--recursive` flag, which is spelled `--recurse-submodules` in newer versions of git (the old spelling still works) just tells git to download any submodules too, if you haven't seen that before. If you are short on space, use `--recurse-submodules=extern/googletest` to only get the one submodule we care about. If you forget to add the flag, running `git submodule update --init` will get all the submodules for you after you've cloned.
 > 
 > Now, from the newly downloaded directory, let's try the classic CMake build procedure:
 > 

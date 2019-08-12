@@ -17,7 +17,7 @@ The following file is fine for the following examples:
 
 ```c
 /* simple.c or simple.cpp */
-#include <cstdio.h>
+#include <stdio.h>
 
 int main() {
     printf("Hello, World!");
