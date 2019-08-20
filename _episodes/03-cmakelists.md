@@ -35,7 +35,7 @@ This is the simplest possible CMakeLists:
 cmake_minimum_required(VERSION 3.11)
 
 project(MyProject)
-   
+
 add_executable(myexample simple.cpp)
 ```
 
@@ -58,7 +58,7 @@ project(MyProject
   LANGUAGES
     CXX
 )
-   
+
 add_executable(myexample simple.cpp)
 ```
 
@@ -67,13 +67,18 @@ add_executable(myexample simple.cpp)
 
 
 > ## Try it out
-> 
-> Build and run the example code with the example `CMakeLists.txt`.
+>
+> Build and run the example code with a `CMakeLists.txt` similar to the one above.
+>
+> ```bash
+> git clone https://github.com/henryiii/cmake_workshop.git
+> cd cmake_workshop/code/00-intro
+> ```
 {:.challenge}
 
 
 > ## More reading
-> 
+>
 > * Based on [Modern CMake basics][]
 {:.checklist}
 
