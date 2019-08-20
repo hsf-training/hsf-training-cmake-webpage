@@ -42,7 +42,7 @@ To recap, you should use CMake if:
 
 ## (More) Modern CMake
 
-CMake has really changed dramatically since it was introduced around 2000. And, by the time of 2.8, it was available in lots of Linux Distribution package managers. However, this means there often are really old versions of CMake "available by default" in your environment. Please, please upgrade and design for newer CMake. No one likes writing or debugging build systems[^1]. Using a newer version can cut your build system code in less than half, reduce bugs, integrate better with external dependents, and more. Installing CMake can be as little as one line, and doesn't require sudo access. [See more info here](https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html).
+CMake has really changed dramatically since it was introduced around 2000. And, by the time of 2.8, it was available in lots of Linux Distribution package managers. However, this means there often are really old versions of CMake "available by default" in your environment. Please, please upgrade and design for newer CMake. No one likes writing or debugging build systems. Using a newer version can cut your build system code in less than half, reduce bugs, integrate better with external dependents, and more. Installing CMake can be as little as one line, and doesn't require sudo access. [See more info here](https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html).
 
 ## Other sources
 
