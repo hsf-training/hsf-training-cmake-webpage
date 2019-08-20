@@ -26,3 +26,4 @@ Useful docker containers:
 
 * `atlas/analysisbase:21.2.75`: See the [ATLAS-Docker preworkshop setup](https://adjackp.github.io/pre-workshopMaterial/02-atlasdocker/index.html).
 
+{% include links.md %}
