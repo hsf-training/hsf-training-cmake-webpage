@@ -74,6 +74,25 @@ add_executable(myexample simple.cpp)
 > git clone https://github.com/henryiii/cmake_workshop.git
 > cd cmake_workshop/code/00-intro
 > ```
+>
+> > ## Solution
+> >
+> > ```cmake
+> > # This is required in all CMakeLists
+> > # Selecting a nice minimum version and range
+> > cmake_minimum_required(VERSION 3.11...3.15)
+> >
+> > # We can call the project anything we want
+> > # Listing the language(s) avoids the C + CXX default
+> > project(MyExample01 LANGUAGES C)
+> >
+> > # We need an executable target
+> > add_executable(simple_example
+> >   simple_example.c
+> > )
+> >
+> > ```
+> {:.solution}
 {:.challenge}
 
 
