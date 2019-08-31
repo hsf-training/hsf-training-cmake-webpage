@@ -20,50 +20,50 @@ Before writing CMake, let's make sure you know how to run it to make things. Thi
 
 > ## Try it out
 > Let's get a project and try to build it. For fun, let's build CLI11:
-> 
+>
 > ```bash
 > git clone --recursive https://github.com/CLIUtils/CLI11.git
 > cd CLI11
 > ```
-> 
+>
 > Note: the `--recursive` flag, which is spelled `--recurse-submodules` in newer versions of git (the old spelling still works) just tells git to download any submodules too, if you haven't seen that before. If you are short on space, use `--recurse-submodules=extern/googletest` to only get the one submodule we care about. If you forget to add the flag, running `git submodule update --init` will get all the submodules for you after you've cloned.
-> 
+>
 > Now, from the newly downloaded directory, let's try the classic CMake build procedure:
-> 
-> ```bash
+>
+> ~~~bash
 > mkdir build
 > cd build
 > cmake ..
 > make
 > ctest
-> ```
+> ~~~
 {:.challenge}
 
 This will make a **build directory**, change to it, then run the `cmake` command *from the build directory, pointing to the source directory*. CMake will configure and generate makefiles by default, as well as set all options to their default settings and cache them into a file called CMakeCache.txt, which will sit here in the build directory. You can call the build directory anything you want; by convention it should have the word `build` in it to be ignored by most package's `.gitignore` files.
 
-> ## Warning about in-source builds 
-> 
+> ## Warning about in-source builds
+>
 > Never do an "in-source" build - that is, run `cmake .` from the source directory. It will pollute your source directory with build outputs, CMake configuration files, and will disable out-of-source builds. A few packages do not allow the source directory to even sit inside the build directory; if that is the case, you need to change the relative path `..` accordingly.
 >
 > Just to clarify, you can point CMake at either the source directory from the build directory, or at an *existing* build directory from anywhere.
 {: .discussion}
 
 > ## Other syntax choices
-> 
+>
 > You have some freedom here. You can use:
 >
-> ```bash
+> ~~~bash
 > cmake --build .
-> ```
-> 
+> ~~~
+>
 > to build without referring to the build tool itself.
 >
 > A very new way to work with CMake (3.13+) and build directories is to run CMake from the source directory:
 >
-> ```bash
+> ~~~bash
 > cmake -S . -B build
 > cmake --build build
-> ```
+> ~~~
 >
 > In some cases this may be more natural, and requires much less directory switching. A few commands (like `ctest` do not work outside the build directory, though.
 {: .callout}
@@ -126,12 +126,12 @@ These are common CMake options to most packages:
 * `-DBUILD_TESTING=` This is a common name for enabling tests, not all packages use it, though, sometimes with good reason.
 
 > ## Try it out
-> 
+>
 > In the CLI11 repository you cloned:
 >
 > * Check to see what options are available
 > * Change a value; maybe set `CLI11_CXX_STD` to 14 or turn off testing.
-> 
+>
 {:.challenge}
 
 ## Debugging your CMake files
@@ -139,7 +139,7 @@ These are common CMake options to most packages:
 We've already mentioned verbose output for the build, but you can also see verbose CMake configure output too. The `--trace` option will print every line of CMake that is run. Since this is very verbose, CMake 3.7 added `--trace-source="filename"`, which will print out every executed line of just the file you are interested in when it runs. If you select the name of the file you are interested in debugging (usually with a parent directory if you are debugging a CMakeLists.txt, since all of those have the same name), you can just see the lines that run in that file. Very useful!
 
 > ## Try it out
-> 
+>
 > Run the following from the source directory:
 >
 > ```bash
@@ -149,14 +149,14 @@ We've already mentioned verbose output for the build, but you can also see verbo
 
 > ## Answer this
 > Question: Does `cmake build` build anything?
-> 
+>
 > > ## Answer
 > > No, the "build" here is the directory. This will configure (create build system files). To build, you would add `--build` before the directory, or use your build tool, such as `make`.
 > {:.solution}
 {:.challenge}
 
 > ## More reading
-> 
+>
 > * Based on [Modern CMake intro/running][]
 {:.checklist}
 

@@ -15,3 +15,13 @@ add_executable(simple_example
 )
 
 target_link_libraries(simple_example PUBLIC simple_lib)
+
+# Does -lm work? (notice this is find_library, not find_package)
+# Saves the location of the m library in a variable named MATH_LIBRARY
+find_library(MATH_LIBRARY m)
+
+# If there is a -lm, let's use it
+if(MATH_LIBRARY)
+    target_link_libraries(simple_lib PUBLIC ${MATH_LIBRARY})
+endif()
+

@@ -31,13 +31,13 @@ Another type of target is a library:
 add_library(mylibrary simplelib.cpp)
 ```
 
-You can add the keywords `STATIC`, `SHARED`, or `MODULE` if you know what kind of library you want to make; the default is sortof an "auto" library that is user selectable with `BUILD_SHARED_LIBS`.
+You can add the keywords `STATIC`, `SHARED`, or `MODULE` if you know what kind of library you want to make; the default is sort-of an "auto" library that is user selectable with `BUILD_SHARED_LIBS`.
 
 You can make non-built libraries too. More on that later, once we see what we can do with targets.
 
 ## Linking
 
-Once you have several targets, you can discribe the relationship between them with `target_link_libraries` and a keyword; one of `PUBLIC`, `PRIVATE`, and `INTERFACE`.
+Once you have several targets, you can describe the relationship between them with `target_link_libraries` and a keyword; one of `PUBLIC`, `PRIVATE`, and `INTERFACE`.
 
 ![Example of Public and Private inheritance](../fig/04-mermaid-libs.svg){:height="500px" }
 
@@ -60,10 +60,10 @@ There are two collections of properties on every target that can be filled with 
 >
 > Get this repository and go to the example. Try to write a CMakeLists that will correctly build.
 >
-> ```bash
+> ~~~bash
 > git clone https://github.com/henryiii/cmake_workshop.git
 > cd cmake_workshop/code/01-simple
-> ```
+> ~~~
 >
 > The files here are:
 > * simple_lib.cpp: Must be compiled with `MYLIB_PRIVATE` and `MYLIB_PUBLIC` defined.
@@ -72,7 +72,7 @@ There are two collections of properties on every target that can be filled with 
 > Use `target_compile_definitions(<target> <private or public> <definition(s)>)` to set the definitions on `simple_lib`.
 > > ## Solution
 > >
-> > ```cmake
+> > ~~~cmake
 > > cmake_minimum_required(VERSION 3.11)
 > >
 > > project(MyExample01 LANGUAGES CXX)
@@ -86,19 +86,21 @@ There are two collections of properties on every target that can be filled with 
 > >
 > > # The above line *did not* set the includes - we need to
 > > # We can also set ., and it should be expanded to the current source dir
+> >
 > > target_include_directories(simple_lib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 > >
 > > # Adding definitions
 > > target_compile_definitions(simple_lib PUBLIC MYLIB_PUBLIC)
 > > target_compile_definitions(simple_lib PRIVATE MYLIB_PRIVATE)
 > >
+> > # Now add the executable
 > > add_executable(simple_example
 > >   simple_example.cpp
 > > )
 > >
 > > # Adding the all-important link to simple-lib
 > > target_link_libraries(simple_example PUBLIC simple_lib)
-> > ```
+> > ~~~
 > {:.solution}
 {:.challenge}
 
@@ -126,7 +128,7 @@ add_library(some_header_only_lib INTERFACE)
 
 Notice you didn't need to add any source files. Now you can set `INTERFACE` properties on this only (since there is no built component).
 
-The second situation is if you have a pre-built library that you want to use. This is called an imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries can also be interface libraries, they can built and modified using the same syntax as other libraries (starting in CMake 3.11), and they can have `::` in thier name. (`ALIAS` libraries, which simply rename some other library, are also allowed to have `::`). Most of the time you will get imported libraries from other places, and will not be making your own.
+The second situation is if you have a pre-built library that you want to use. This is called an imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries can also be interface libraries, they can built and modified using the same syntax as other libraries (starting in CMake 3.11), and they can have `::` in their name. (`ALIAS` libraries, which simply rename some other library, are also allowed to have `::`). Most of the time you will get imported libraries from other places, and will not be making your own.
 
 > ## More reading
 >
