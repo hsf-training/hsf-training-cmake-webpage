@@ -35,6 +35,8 @@ see the changes take effect locally.
 
 Welcome to the FIRST-HEP CMake tutorial! The aim of this tutorial is to cover the basics of using CMake. This tutorial is based on the online book [Modern CMake][], with a focus on CMake 3.11+. This is almost what is [called the "More Modern" era](https://github.com/Bagira80/More-Modern-CMake) of CMake (which is 3.12+). We will cover the basics of making and building a project, and some details of design.
 
+First taught at the [2019 USATLAS Computing Bootcamp at LBNL](https://smeehan12.github.io/2019-08-19-usatlas-computing-bootcamp/).
+
 > ## Prereqs
 > 
 > On your computer, you need to have:
