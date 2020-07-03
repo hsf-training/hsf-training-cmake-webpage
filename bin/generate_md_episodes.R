@@ -14,7 +14,7 @@ generate_md_episodes <- function() {
   required_pkgs <- unique(c(
     ## Packages for episodes
     renv::dependencies(file.path(root, "_episodes_rmd"), progress = FALSE, error = "ignore")$Package,
-    ## Pacakges for tools
+    ## Packages for tools
     renv::dependencies(file.path(root, "bin"), progress = FALSE, error = "ignore")$Package
   ))
 
