@@ -18,7 +18,7 @@ before_install:
   - rvm default
   - gem install json kramdown jekyll bundler
 install:
-  - pip install pyyaml
+  - pip install -U pyyaml
 script:
   - make lesson-check-all
   - make --always-make site
