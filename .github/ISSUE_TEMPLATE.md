@@ -17,5 +17,5 @@ reviewer, please contact The Carpentries Team at team@carpentries.org.
 
 You may delete these instructions from your comment.
 
-\- The Carpentries
+\- HSF Training
 </details>
