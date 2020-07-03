@@ -32,6 +32,10 @@
       <a href="{{ site.carpentries_site }}" class="pull-left">
         <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/cp-logo-blue.svg %}" alt="The Carpentries logo" />
       </a>
+      {% elsif site.carpentry == "hsf" %}
+      <a href="{{ site.hsf_site }}" class="pull-left">
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/hsf-logo.png%}" alt="The Carpentries logo" />
+      </a>
       {% endif %}
 
       {% comment %} Always show link to home page. {% endcomment %}
