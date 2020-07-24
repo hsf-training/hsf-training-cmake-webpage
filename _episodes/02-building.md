@@ -28,18 +28,28 @@ Before writing CMake, let's make sure you know how to run it to make things. Thi
 >
 > Note: the `--recursive` flag, which is spelled `--recurse-submodules` in newer versions of git (the old spelling still works) just tells git to download any submodules too, if you haven't seen that before. If you are short on space, use `--recurse-submodules=extern/googletest` to only get the one submodule we care about. If you forget to add the flag, running `git submodule update --init` will get all the submodules for you after you've cloned.
 >
-> Now, from the newly downloaded directory, let's try the classic CMake build procedure:
+> Now, from the newly downloaded directory, let's try the modern CMake (3.14) build procedure:
 >
 > ~~~bash
-> mkdir build
-> cd build
-> cmake ..
-> make
-> ctest
+> cmake -S . -B build
+> cmake --build build
+> cmake --build build --target test
 > ~~~
 {:.challenge}
 
-This will make a **build directory**, change to it, then run the `cmake` command *from the build directory, pointing to the source directory*. CMake will configure and generate makefiles by default, as well as set all options to their default settings and cache them into a file called CMakeCache.txt, which will sit here in the build directory. You can call the build directory anything you want; by convention it should have the word `build` in it to be ignored by most package's `.gitignore` files.
+This will make a **build directory** (`-B`) if it does not exist, with the source directory defined
+as `-S`.  CMake will configure and generate makefiles by default, as well as set all options to
+their default settings and cache them into a file called CMakeCache.txt, which will sit in the build
+directory. You can call the build directory anything you want; by convention it should have the word
+`build` in it to be ignored by most package's `.gitignore` files.
+
+You can then invoke your build system (line 2). Regardless of wether you used `make` (the default),
+`ninja`, or even an IDE-based system, you can build with a uniform command. You can add `-j 2` to
+build on two cores, or `-v` to verbosely show commands used to build.
+
+Finally, you can even run your tests from here, by passing the "test" target to the underlying build
+system. If you use CMake 3.15+, you can shorten `--target` to `-t`. There's also a new `cmake <dir>
+--install` comand in 3.15 that does the install - without invoking the underlying build system!
 
 > ## Warning about in-source builds
 >
@@ -50,22 +60,20 @@ This will make a **build directory**, change to it, then run the `cmake` command
 
 > ## Other syntax choices
 >
-> You have some freedom here. You can use:
+> The classic, battle hardened method should be shown for completness:
 >
 > ~~~bash
-> cmake --build .
+> mkdir build
+> cd build
+> cmake ..
+> make
+> make test
 > ~~~
 >
-> to build without referring to the build tool itself.
->
-> A very new way to work with CMake (3.13+) and build directories is to run CMake from the source directory:
->
-> ~~~bash
-> cmake -S . -B build
-> cmake --build build
-> ~~~
->
-> In some cases this may be more natural, and requires much less directory switching. A few commands (like `ctest` do not work outside the build directory, though.
+> This has several downsides. If the directory already exists, you have to add `-p`, but that
+> doesn't work on Windows. You can't as easily change between build directories, because you are in
+> it. It's more lines, and if you forget to change to the build directory, and you use `cmake .`
+> instead of `cmake ..`, then you can polute your source directory.
 {: .callout}
 
 
@@ -75,10 +83,6 @@ This will make a **build directory**, change to it, then run the `cmake` command
 Selecting a compiler must be done on the first run in an empty directory. It's not CMake syntax per se, but you might not be familiar with it. To pick Clang:
 
 ```bash
-# From build directory
-CC=clang CXX=clang++ cmake ..
-
-# Or from source directory (CMake 3.13+)
 CC=clang CXX=clang++ cmake -S . -B build
 ```
 
@@ -94,23 +98,25 @@ cmake --help
 
 And you can pick a tool with `-G"My Tool"` (quotes only needed if spaces are in the tool name). You should pick a tool on your first CMake call in a directory, just like the compiler. Feel free to have several build directories, like `build` and `buildXcode`.
 You can set the environment variable `CMAKE_GENERATOR` to control the default generator (CMake 3.15+).
-Note that makefiles will only run in parallel if you explicitly pass a number of threads, such as `make -j2`, while Ninja will automatically run in parallel. You can directly pass a parallelization option such as `-j2` to the `cmake --build .` command in recent versions of CMake.
+Note that makefiles will only run in parallel if you explicitly pass a number of threads, such as `make -j2`, while Ninja will automatically run in parallel. You can directly pass a parallelization option such as `-j 2` to the `cmake --build .` command in recent versions of CMake.
 
 ## Setting options
 
-You set options in CMake with `-D`. You can see a list of options with `-L`, or a list with human-readable help with `-LH`. If you don't list the source/build directory, the listing will not rerun CMake (`cmake -L` instead of `cmake -L .`).
+You set options in CMake with `-D`. You can see a list of options with `-L`, or a list with human-readable help with `-LH`.
 
 ## Verbose and partial builds
 
 Again, not really CMake, but if you are using a command line build tool like `make`, you can get verbose builds:
 
 ```bash
-VERBOSE=1 make
+cmake --build build -v
 ```
 
-You can actually write `make VERBOSE=1`, and make will also do the right thing, though that's a feature of `make` and not the command line in general. In CMake 3.14, verbose mode was added to the build options, so `cmake --build . -v` will activate the verbose mode of your build tool.
+If you are using make directly, you can write `VERBOSE=1 make` or even `make VERBOSE=1`, and make will also do the right thing, though writing a variable after a command is a feature of `make` and not the command line in general.
 
-You can also build just a part of a build by specifying a target, such as the name of a library or executable you've defined in CMake, and make will just build that target.
+You can also build just a part of a build by specifying a target, such as the name of a library or
+executable you've defined in CMake, and make will just build that target. That's the `--target`
+(`-t` in CMake 3.15+) option.
 
 ## Options
 

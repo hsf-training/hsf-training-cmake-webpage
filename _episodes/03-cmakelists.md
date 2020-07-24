@@ -32,7 +32,7 @@ This file can be compiled with C or C++.
 This is the simplest possible CMakeLists:
 
 ```cmake
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.14)
 
 project(MyProject)
 
@@ -48,7 +48,7 @@ Let's look at the three lines:
 Those commands have a few extra arguments that you can give:
 
 ```cmake
-cmake_minimum_required(VERSION 3.11...3.15)
+cmake_minimum_required(VERSION 3.14...3.18)
 
 project(MyProject
   VERSION
