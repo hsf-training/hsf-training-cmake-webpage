@@ -1,5 +1,5 @@
-# Works with 3.11 and tested through 3.15
-cmake_minimum_required(VERSION 3.11...3.15)
+# Works with 3.11 and tested through 3.18
+cmake_minimum_required(VERSION 3.14...3.18)
 
 # Project name and a few useful settings. Other commands can pick up the results
 project(ModernCMakeExample
@@ -11,7 +11,7 @@ project(ModernCMakeExample
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
     # Optionally set things like CMAKE_CXX_STANDARD, CMAKE_POSITION_INDEPENDENT_CODE here
-    
+
     # Let's ensure -std=c++xx instead of -std=g++xx
     set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -51,7 +51,7 @@ find_package(Boost REQUIRED)
 FetchContent_Declare(
   fmtlib
   GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-  GIT_TAG        5.3.0
+  GIT_TAG        7.0.2
 )
 FetchContent_MakeAvailable(fmtlib)
 # Adds fmt::fmt
@@ -63,8 +63,7 @@ add_subdirectory(src)
 add_subdirectory(apps)
 
 # Testing only available if this is the main app
-# Emergency override MODERN_CMAKE_BUILD_TESTING provided as well
-if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MODERN_CMAKE_BUILD_TESTING) AND BUILD_TESTING)
+if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
 

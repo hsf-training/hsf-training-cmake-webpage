@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.14)
 
 project(RootUseFileExample LANGUAGES CXX)
 
-# 6.16 fixes a bug in ROOT_EXE_LINKER_FLAGS, expecially on macOS
+# 6.16 fixes a bug in ROOT_EXE_LINKER_FLAGS, especially on macOS
 find_package(ROOT 6.16 CONFIG REQUIRED)
 
 include("${ROOT_USE_FILE}")
