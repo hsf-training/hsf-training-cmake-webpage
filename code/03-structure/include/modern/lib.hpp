@@ -10,5 +10,3 @@
 std::tuple<double, double> accumulate_vector(
     const std::vector<double>& values ///< The vector of values
 );
-
-

@@ -7,8 +7,8 @@ int factorial(int a) {
     return 0 == a ? 1 : a * factorial(a - 1);
 }
 
-/// Approxomate the sin function. 
-/// 
+/// Approxomate the sin function.
+///
 /// Uses the formula:
 ///   x - x³/3! + x⁵/5! - ···
 ///

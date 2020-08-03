@@ -70,26 +70,26 @@ please [get in touch](#getting-and-giving-help).
     if your username is `gvwilson`,
     the repository's URL will be `https://github.com/gvwilson/2016-12-01-miskatonic`.
 
-3.  Ensure you are on the gh-pages branch by clicking on the branch under the drop 
+3.  Ensure you are on the gh-pages branch by clicking on the branch under the drop
     down in the menu bar (see the note below):
 
     ![](fig/select-gh-pages-branch.png?raw=true)
 
 3.  Edit the header of `index.md` to customize the list of instructors,
-    workshop venue, etc. 
+    workshop venue, etc.
     You can do this in the browser by clicking on it in the file view on GitHub
     and then selecting the pencil icon in the menu bar:
 
     ![](fig/edit-index-file-menu-bar.png?raw=true)
-    
+
     Editing hints are embedded in `index.md`,
     and full instructions are in [the customization instructions][customization].
-    
+
 4.  Edit `_config.yml` to customize certain site-wide variables, such as: `carpentry` (to tell us which carpentry workshop this is), `title` (overall title for all pages), `workshop_repo` (the URL of the workshop repository on GitHub) and `workshop_site` (the repository's GitHub Pages URL).
 
     Editing hints are embedded in `_config.yml`,
     and full instructions are in [the customization instructions][customization].
-    
+
 5. Edit the `schedule.html` file to edit the schedule for your upcoming workshop. This file is located in the `_includes` directory, make sure to choose the one from the appropriate `dc` (Data Carpentry workshop), `lc` (Library Carpentry), or `sc` (Software Carpentry) subdirectory.
 
 6.  Alternatively,
@@ -102,7 +102,7 @@ please [get in touch](#getting-and-giving-help).
     git clone -b gh-pages https://github.com/your_username/YYYY-MM-DD-site
     ~~~
 
-    You should specify `-b gh-pages` to checkout the gh-pages branch because the imported 
+    You should specify `-b gh-pages` to checkout the gh-pages branch because the imported
     repository doesn't have a `master` branch.
 
     In order to view your changes once you are done editing,
@@ -119,7 +119,7 @@ please [get in touch](#getting-and-giving-help).
 
 8.  Optional: you can now change the README.md file in your website's repository, which contains these instructions, so that it contains a short description of your workshop and a link to the workshop website.
 
-9.  Optional: Add a link to your workshop website on the repository main page in the description/website section (look for the `Edit` button on the right to add).  
+9.  Optional: Add a link to your workshop website on the repository main page in the description/website section (look for the `Edit` button on the right to add).
 
 **Note:**
 please do all of your work in your repository's `gh-pages` branch,

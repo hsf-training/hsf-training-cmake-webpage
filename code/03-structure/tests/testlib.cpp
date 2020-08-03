@@ -9,4 +9,3 @@ TEST_CASE( "Quick check", "[main]" ) {
     REQUIRE( mean == 2.0 );
     REQUIRE( moment == Approx(4.666666) );
 }
-

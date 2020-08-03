@@ -14,4 +14,3 @@ add_library(DictExample SHARED DictExample.cxx DictExample.h G__DictExample.cxx)
 root_generate_dictionary(G__DictExample DictExample.h LINKDEF DictLinkDef.h)
 
 target_link_libraries(DictExample PUBLIC ${ROOT_LIBRARIES})
-
