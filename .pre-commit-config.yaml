@@ -1,0 +1,20 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.1.0
+  hooks:
+  - id: check-added-large-files
+  - id: check-case-conflict
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: debug-statements
+  - id: end-of-file-fixer
+    files: ^(_episodes|code|README.md|setup.md)
+  - id: mixed-line-ending
+  - id: trailing-whitespace
+    files: ^(_episodes|code|README.md|setup.md)
+
+- repo: https://github.com/cheshirekow/cmake-format-precommit
+  rev: v0.6.11
+  hooks:
+  - id: cmake-format
+    additional_dependencies: [pyyaml]
