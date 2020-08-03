@@ -13,7 +13,9 @@ keypoints:
 
 # Targets
 
-Now you know how to compile a single file using three lines of CMake. But what happens if you have more than one file with dependencies? You need to be able to tell CMake about the structure of your project, and it will help you build it. To do so, you will need targets.
+Now you know how to compile a single file using three lines of CMake. But what happens if you have
+more than one file with dependencies? You need to be able to tell CMake about the structure of your
+project, and it will help you build it. To do so, you will need targets.
 
 You've already seen a target:
 
@@ -21,9 +23,11 @@ You've already seen a target:
 add_executable(myexample simple.cpp)
 ```
 
-This creates an "executable" target with the name `mytarget`. Target names must be unique (and there is a way to set the executable name to something other than the target name if you really want to).
+This creates an "executable" target with the name `mytarget`. Target names must be unique (and there
+is a way to set the executable name to something other than the target name if you really want to).
 
-Targets are much like "objects" in other languages; they have properties (member variables) that hold information. The `SOURCE_FILES` property, for example, will have `simple.cpp` in it.
+Targets are much like "objects" in other languages; they have properties (member variables) that
+hold information. The `SOURCE_FILES` property, for example, will have `simple.cpp` in it.
 
 Another type of target is a library:
 
@@ -31,13 +35,38 @@ Another type of target is a library:
 add_library(mylibrary simplelib.cpp)
 ```
 
-You can add the keywords `STATIC`, `SHARED`, or `MODULE` if you know what kind of library you want to make; the default is sort-of an "auto" library that is user selectable with `BUILD_SHARED_LIBS`.
+You can add the keywords `STATIC`, `SHARED`, or `MODULE` if you know what kind of library you want
+to make; the default is sort-of an "auto" library that is user selectable with `BUILD_SHARED_LIBS`.
 
 You can make non-built libraries too. More on that later, once we see what we can do with targets.
 
 ## Linking
 
-Once you have several targets, you can describe the relationship between them with `target_link_libraries` and a keyword; one of `PUBLIC`, `PRIVATE`, and `INTERFACE`.
+Once you have several targets, you can describe the relationship between them with
+`target_link_libraries` and a keyword; one of `PUBLIC`, `PRIVATE`, and `INTERFACE`. Don't forget
+this keyword when making a library! CMake goes into an old compatibility mode for this target that
+generally breaks things.
+
+> ## Question
+>
+> You have a library, `my_lib`, made from `my_lib.hpp` and `my_lib.cpp`. It requires at least C++14
+> to compile. If you then add `my_exe`, and it needs `my_lib`, should that force `my_exe` to compile
+> with c++11 or better?
+>
+> > ## Answer
+> >
+> > This depends on the header. If the header contains C++14, this is a PUBLIC requirement - both
+> > the library and it's users need it. However, if the header is valid in all versions of C++, and
+> > only the implementations inside `my_lib.cpp` require C++14, then this is a `PRIVATE` requirement
+> > - users don't need to be forced into C++14 mode.
+> >
+> > Maybe you do require users have C++14, but your library can compile with any version of C++.
+> > This would be an `INTERFACE` requirement.
+> {:.solution}
+>
+{:.challenge}
+
+
 
 ![Example of Public and Private inheritance](../fig/04-mermaid-libs.svg){:height="500px" }
 
@@ -73,7 +102,7 @@ There are two collections of properties on every target that can be filled with 
 > > ## Solution
 > >
 > > ~~~cmake
-> > cmake_minimum_required(VERSION 3.11)
+> > cmake_minimum_required(VERSION 3.14)
 > >
 > > project(MyExample01 LANGUAGES CXX)
 > >
@@ -105,7 +134,8 @@ There are two collections of properties on every target that can be filled with 
 {:.challenge}
 
 ### Things you can set on targets
-* [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html): Other targets; can also pass library names directly
+* [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html):
+  Other targets; can also pass library names directly
 * `target_include_directories`: Include directories
 * `target_compile_features`: The compiler features you need activated, like `cxx_std_11`
 * `target_compile_definitions`: Definitions
@@ -118,17 +148,27 @@ See more [commands here](https://cmake.org/cmake/help/latest/manual/cmake-comman
 
 ## Other types of targets
 
-You might be really exited by targets and are already planning out how you can describe your programs in terms of targets. That's great! However, you'll quickly run into two more situations where the target language is useful, but you need some extra flexibility over what we've covered.
+You might be really exited by targets and are already planning out how you can describe your
+programs in terms of targets. That's great! However, you'll quickly run into two more situations
+where the target language is useful, but you need some extra flexibility over what we've covered.
 
-First, you might have a library that conceptually should be a target, but doesn't actually have any built components - a "header-only" library. These are called interface libraries in CMake and you would write:
+First, you might have a library that conceptually should be a target, but doesn't actually have any
+built components - a "header-only" library. These are called interface libraries in CMake and you
+would write:
 
 ```cmake
 add_library(some_header_only_lib INTERFACE)
 ```
 
-Notice you didn't need to add any source files. Now you can set `INTERFACE` properties on this only (since there is no built component).
+Notice you didn't need to add any source files. Now you can set `INTERFACE` properties on this only
+(since there is no built component).
 
-The second situation is if you have a pre-built library that you want to use. This is called an imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries can also be interface libraries, they can built and modified using the same syntax as other libraries (starting in CMake 3.11), and they can have `::` in their name. (`ALIAS` libraries, which simply rename some other library, are also allowed to have `::`). Most of the time you will get imported libraries from other places, and will not be making your own.
+The second situation is if you have a pre-built library that you want to use. This is called an
+imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries can also be
+`INTERFACE` libraries, they can built and modified using the same syntax as other libraries
+(starting in CMake 3.11), and they can have `::` in their name. (`ALIAS` libraries, which simply
+rename some other library, are also allowed to have `::`). Most of the time you will get imported
+libraries from other places, and will not be making your own.
 
 > ## More reading
 >

@@ -10,9 +10,15 @@ keypoints:
 - "ROOT has a CONFIG package"
 ---
 
-Let's try a couple of ROOT examples; one with the classic variable/global configure and one with the newer target method. You will need a ROOT install or a ROOT docker container to run these examples. If you don't want to use the ATLAS one, you can use `rootproject/root:latest`, which is an official fedora based build. Conda-Forge ROOT + CMake would work too, if you like Conda.
+Let's try a couple of ROOT examples; one with the classic variable/global configure and one with the
+newer target method. You will need a ROOT install or a ROOT docker container to run these examples.
+You can use `rootproject/root:latest` to test this, which is an official
+Ubuntu based build. Conda-Forge ROOT + CMake would work too, if you like Conda. (ROOT has tags for
+lots of other base images, too).
 
-For these examples, you should be using a recent version of ROOT - especially for targets, which is still being worked on. The CONFIG files were added in 6.10, and targets received a lot of work in 6.14+. 6.16 has pretty decent targets.
+For these examples, you should be using a recent version of ROOT - especially for targets, which is
+still being worked on. The CONFIG files were added in 6.10, and targets received a lot of work in
+6.14+. 6.16 has pretty decent targets.
 
 ## Example 1: UseROOT
 
