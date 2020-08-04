@@ -51,7 +51,7 @@ generally breaks things.
 >
 > You have a library, `my_lib`, made from `my_lib.hpp` and `my_lib.cpp`. It requires at least C++14
 > to compile. If you then add `my_exe`, and it needs `my_lib`, should that force `my_exe` to compile
-> with c++11 or better?
+> with C++14 or better?
 >
 > > ## Answer
 > >
@@ -81,9 +81,33 @@ M -- > T{Target: mylibrary}
 T -- > E[Target: myprogram]
 -->
 
-Figure 1: Example of PUBLIC, PRIVATE, and INTERFACE. `myprogram` will build the three libraries it sees through `mylibrary`; the private library will not affect it.
+Figure 1: Example of PUBLIC, PRIVATE, and INTERFACE. `myprogram` will build the three libraries it
+sees through `mylibrary`; the private library will not affect it.
 
-There are two collections of properties on every target that can be filled with values; the "private" properties control what happens when you build that target, and the "interface" properties tell targets linked to this one what to do when building. The `PUBLIC` keyword fills both property fields at the same time.
+There are two collections of properties on every target that can be filled with values; the
+"private" properties control what happens when you build that target, and the "interface" properties
+tell targets linked to this one what to do when building. The `PUBLIC` keyword fills both property
+fields at the same time.
+
+## Example 1: Include directories
+
+When you run `target_include_directory(TargetA PRIVATE mydir)`, then the `INCLUDE_DIRECTORIES`
+property of `TargetA` has `mydir` appended. If you use the keyword `INTERFACE` instead, then
+`INTERFACE_INCLUDE_DIRECTORIES` is appended to, instead. If you use `PUBLIC`, then both properties
+are appended to at the same time.
+
+## Example 2: C++ standard
+
+There is a C++ standard property - `CXX_STANDARD`. You can set this property, and like many
+properties in CMake, it gets it's default value from a `CMAKE_CXX_STANDARD` variable if it is set,
+but there is no INTERFACE version - you cannot force a `CXX_STANDARD` via a target. What would you
+do if you had a C++11 interface target and a C++14 interface target and linked to both?
+
+By the way, there _is_ a way to handle this - you can specify the minimum compile features you need
+to compile a target; the `std_cxx_11` and similar meta-features are perfect for this - your target
+will compile with at least the highest level specified, unless `CXX_STANDARD` is set (and that's a
+nice, clear error if you set `CXX_STANDARD` too low). `target_compile_features` can fill
+`COMPILE_FEATURES` and `INTERFACE_COMPILE_FEATURES`, just like directories in example 1.
 
 > ## Try it out
 >
@@ -98,7 +122,9 @@ There are two collections of properties on every target that can be filled with 
 > * simple_lib.cpp: Must be compiled with `MYLIB_PRIVATE` and `MYLIB_PUBLIC` defined.
 > * simple_example.cpp: Must be compiled with `MYLIB_PUBLIC` defined, but not `MYLIB_PRIVATE`
 >
-> Use `target_compile_definitions(<target> <private or public> <definition(s)>)` to set the definitions on `simple_lib`.
+> Use `target_compile_definitions(<target> <private or public> <definition(s)>)` to set the
+> definitions on `simple_lib`.
+>
 > > ## Solution
 > >
 > > ~~~cmake
