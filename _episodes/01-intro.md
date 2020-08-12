@@ -56,15 +56,16 @@ outnumber the issues people open because you required a CMake newer than they wa
 I've only seen one of those, and they came around when they saw the feature they would have to give
 up).
 
-> ## Example
+> ## Example of Modern CMake
 >
-> Bad 2.8 style CMake: Adding a C++11 flag manually. This is compiler specific, is different for
+> **Bad 2.8 style CMake**: Adding a C++11 flag manually. This is compiler specific, is different for
 > CUDA, and locks in a set version, rather than a minimum version.
 >
-> If you require CMake 3.1+, you can set `CXX_STANDARD`, but only on a final target.
+> **If you require CMake 3.1+**, you can set `CXX_STANDARD`, but only on a final target.
 >
-> If you require CMake 3.8+, you can just use `compile_features` to set a _minimium_ feature level
+> **If you require CMake 3.8+**, you can just use `compile_features` to set a _minimium_ feature level
 > you require, and all targets using yours will get at least that level set on them!
+{: .callout}
 
 
 ## Other sources

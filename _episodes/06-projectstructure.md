@@ -11,10 +11,39 @@ keypoints:
 ---
 
 
-For this section, we will be looking at the project in `code/03-structure`.
+For this section, we will be looking at the project in [`code/03-structure`][].
 
-First, take a look at the main `CMakeLists.txt` file. This is an example of a nice project file in
-CMake 3.14, so enjoy it for a minute. Now let's look at specifics!
+```
+code/03-structure/
+├── CMakeLists.txt
+├── README.md
+├── apps
+│   ├── CMakeLists.txt
+│   └── app.cpp
+├── cmake
+│   └── FindSomeLib.cmake
+├── docs
+│   ├── CMakeLists.txt
+│   └── mainpage.md
+├── include
+│   └── modern
+│       └── lib.hpp
+├── src
+│   ├── CMakeLists.txt
+│   └── lib.cpp
+└── tests
+    ├── CMakeLists.txt
+    └── testlib.cpp
+```
+
+First, take a look at the main [`CMakeLists.txt`][] file. This is an example of a nice project file
+in CMake 3.14, so enjoy it for a minute. Now let's look at specifics!
+
+<details><summary>Click to see CMakeLists.txt</summary>
+{% highlight cmake%}
+{% include code/03-structure/CMakeLists.txt %}
+{% endhighlight %}
+</details>
 
 ### Protect project code
 
@@ -38,6 +67,8 @@ projects, the first option is most common, and large projects use the second opt
 
 All the find packages here provide imported targets. If you do not have an imported target, **make
 one**! Never use the raw variables past the lines immediately following the `find_package` command.
+There are several easy mistakes to make if you do not make imported targets, including forgetting to
+add `SYSTEM`, and the search order is better (especially before CMake 3.12).
 
 In this project, I use the new FetchContent to download several dependencies; although normally I
 prefer git submodules in `/extern`.
@@ -45,6 +76,13 @@ prefer git submodules in `/extern`.
 ### Source
 
 Now follow the `add_subdirectory` command to see the src folder, where a library is created.
+
+<details><summary>Click to see src/CMakeLists.txt</summary>
+{% highlight cmake%}
+{% include code/03-structure/src/CMakeLists.txt %}
+{% endhighlight %}
+</details>
+
 
 The headers are listed along with the sources in the `add_library` command. This would have been
 another way to do it in CMake 3.11+:
@@ -69,12 +107,28 @@ We also set up the `target_link_libraries` with the appropriate targets.
 Now take a look at `apps/CMakeLists.txt`. This one is pretty simple, since all the leg work for
 using our library was done on the library target, as it should be.
 
+<details><summary>Click to see apps/CMakeLists.txt</summary>
+{% highlight cmake%}
+{% include code/03-structure/apps/CMakeLists.txt %}
+{% endhighlight %}
+</details>
 
 ### Docs and Tests
 
 
 Feel free to look at `docs` and `tests` for their `CMakeLists.txt`.
 
+<details><summary>Click to see docs/CMakeLists.txt</summary>
+{% highlight cmake%}
+{% include code/03-structure/docs/CMakeLists.txt %}
+{% endhighlight %}
+</details>
+
+<details><summary>Click to see tests/CMakeLists.txt</summary>
+{% highlight cmake%}
+{% include code/03-structure/tests/CMakeLists.txt %}
+{% endhighlight %}
+</details>
 
 > ## More reading
 >
@@ -85,5 +139,7 @@ Feel free to look at `docs` and `tests` for their `CMakeLists.txt`.
 [Modern CMake basics/structure]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/structure.html
 
 
+[`code/03-structure`]: {{ site.baseurl }}/code/03-structure
+[`CMakeLists.txt`]: {{ site.baseurl }}/code/03-structure/CMakeLists.txt
 
 {% include links.md %}

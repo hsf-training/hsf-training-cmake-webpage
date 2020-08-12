@@ -29,7 +29,7 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-# (Don't change this -- the contact address for your workshop will be set 
+# (Don't change this -- the contact address for your workshop will be set
 # in the index.md file)
 email: "team@carpentries.org"
 
@@ -93,6 +93,7 @@ defaults:
 exclude:
   - Makefile
   - bin/
+  - data/_answers
   - .Rproj.user/
 
 # Turn on built-in syntax highlighting.

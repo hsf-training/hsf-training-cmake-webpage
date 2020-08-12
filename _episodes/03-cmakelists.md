@@ -76,34 +76,23 @@ add_executable(myexample simple.cpp)
    [cmake-format](https://cmake-format.readthedocs.io/en/latest/).
 
 
-> ## Try it out
->
-> Build and run the example code with a `CMakeLists.txt` similar to the one above.
->
-> ~~~bash
-> git clone https://github.com/henryiii/cmake_workshop.git
-> cd cmake_workshop/code/00-intro
-> ~~~
->
-> > ## Solution
-> >
-> > ~~~cmake
-> > # This is required in all CMakeLists
-> > # Selecting a nice minimum version and range
-> > cmake_minimum_required(VERSION 3.14...3.18)
-> >
-> > # We can call the project anything we want
-> > # Listing the language(s) avoids the C + CXX default
-> > project(MyExample00 LANGUAGES C)
-> >
-> > # We need an executable target
-> > add_executable(simple_example
-> >   simple_example.c
-> > )
-> >
-> > ~~~
-> {:.solution}
-{:.challenge}
+
+<div class="challenge"><h2>Try it out</h2>
+{%- capture tmp -%}
+Build and run the example code with a `CMakeLists.txt` similar to the one above.
+
+~~~bash
+git clone https://github.com/henryiii/cmake_workshop.git
+cd cmake_workshop/code/00-intro
+~~~
+{%- endcapture %}
+{{ tmp | markdownify }}
+<div class="solution"><h2>Solution</h2>
+{% highlight cmake %}
+{% include code/00-intro/CMakeLists.txt %}
+{% endhighlight %}
+</div>
+</div>
 
 
 > ## More reading

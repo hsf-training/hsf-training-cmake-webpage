@@ -109,55 +109,31 @@ will compile with at least the highest level specified, unless `CXX_STANDARD` is
 nice, clear error if you set `CXX_STANDARD` too low). `target_compile_features` can fill
 `COMPILE_FEATURES` and `INTERFACE_COMPILE_FEATURES`, just like directories in example 1.
 
-> ## Try it out
->
-> Get this repository and go to the example. Try to write a CMakeLists that will correctly build.
->
-> ~~~bash
-> git clone https://github.com/henryiii/cmake_workshop.git
-> cd cmake_workshop/code/01-simple
-> ~~~
->
-> The files here are:
-> * simple_lib.cpp: Must be compiled with `MYLIB_PRIVATE` and `MYLIB_PUBLIC` defined.
-> * simple_example.cpp: Must be compiled with `MYLIB_PUBLIC` defined, but not `MYLIB_PRIVATE`
->
-> Use `target_compile_definitions(<target> <private or public> <definition(s)>)` to set the
-> definitions on `simple_lib`.
->
-> > ## Solution
-> >
-> > ~~~cmake
-> > cmake_minimum_required(VERSION 3.14)
-> >
-> > project(MyExample01 LANGUAGES CXX)
-> >
-> > # This is the library
-> > # Including the headers is not required, but is nice for users
-> > add_library(simple_lib
-> >   simple_lib.cpp
-> >   simple_lib.hpp
-> > )
-> >
-> > # The above line *did not* set the includes - we need to
-> > # We can also set ., and it should be expanded to the current source dir
-> >
-> > target_include_directories(simple_lib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
-> >
-> > # Adding definitions
-> > target_compile_definitions(simple_lib PUBLIC MYLIB_PUBLIC)
-> > target_compile_definitions(simple_lib PRIVATE MYLIB_PRIVATE)
-> >
-> > # Now add the executable
-> > add_executable(simple_example
-> >   simple_example.cpp
-> > )
-> >
-> > # Adding the all-important link to simple-lib
-> > target_link_libraries(simple_example PUBLIC simple_lib)
-> > ~~~
-> {:.solution}
-{:.challenge}
+
+<div class="challenge"><h2>Try it out</h2>
+{%- capture tmp -%}
+Get this repository and go to the example. Try to write a CMakeLists that will correctly build.
+
+~~~bash
+git clone https://github.com/henryiii/cmake_workshop.git
+cd cmake_workshop/code/01-simple
+~~~
+
+The files here are:
+* simple_lib.cpp: Must be compiled with `MYLIB_PRIVATE` and `MYLIB_PUBLIC` defined.
+* simple_example.cpp: Must be compiled with `MYLIB_PUBLIC` defined, but not `MYLIB_PRIVATE`
+
+Use `target_compile_definitions(<target> <private or public> <definition(s)>)` to set the
+definitions on `simple_lib`.
+{%- endcapture %}
+{{ tmp | markdownify }}
+<div class="solution"><h2>Solution</h2>
+{% highlight cmake %}
+{% include code/01-simple/CMakeLists.txt %}
+{% endhighlight %}
+</div>
+</div>
+
 
 ### Things you can set on targets
 * [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html):

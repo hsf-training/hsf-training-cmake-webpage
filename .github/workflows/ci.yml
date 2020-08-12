@@ -15,3 +15,55 @@ jobs:
     - uses: actions/setup-python@v2
     - uses: pre-commit/action@v2.0.0
 
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: 00-intro
+      run: |
+        cp _includes/code/00-intro/CMakeLists.txt code/00-intro
+        cmake -S code/00-intro -B build-00-intro
+        cmake --build build-00-intro
+        ./build-00-intro/simple_example
+
+    - name: 01-simple
+      run: |
+        cp _includes/code/01-simple/CMakeLists.txt code/01-simple
+        cmake -S code/01-simple -B build-01-simple
+        cmake --build build-01-simple
+        ./build-01-simple/simple_example
+
+    - name: 03-structure
+      run: |
+        cmake -S code/03-structure -B build-03-structure
+        cmake --build build-03-structure
+        ./build-03-structure/apps/app
+        ./build-03-structure/tests/testlib
+        cmake --build build-03-structure -t test
+
+  root-test:
+    name: ROOT Test
+    runs-on: ubuntu-latest
+    container: rootproject/root:latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build 05a-root
+      run: |
+        cmake -S code/05a-root -B build-05a-root
+        cmake --build build-05a-root
+
+    - name: Test 05a-root
+      run: root -b -q -x ../code/05a-root/CheckLoad.C
+      working-directory: build-05a-root
+
+    - name: Build 05b-root
+      run: |
+        cmake -S code/05b-root -B build-05b-root
+        cmake --build build-05b-root
+
+    - name: Test 05b-root
+      run: root -b -q -x ../code/05b-root/CheckLoad.C
+      working-directory: build-05b-root
