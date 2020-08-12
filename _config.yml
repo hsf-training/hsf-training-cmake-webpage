@@ -93,7 +93,6 @@ defaults:
 exclude:
   - Makefile
   - bin/
-  - data/_answers
   - .Rproj.user/
 
 # Turn on built-in syntax highlighting.
