@@ -21,6 +21,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - uses: jwlawson/actions-setup-cmake@v1.3
+      with:
+        cmake-version: 3.14.6
+
     - name: 00-intro
       run: |
         cp _includes/code/00-intro/CMakeLists.txt code/00-intro
@@ -41,7 +45,7 @@ jobs:
         cmake --build build-03-structure
         ./build-03-structure/apps/app
         ./build-03-structure/tests/testlib
-        cmake --build build-03-structure -t test
+        cmake --build build-03-structure --target test
 
   root-test:
     name: ROOT Test
