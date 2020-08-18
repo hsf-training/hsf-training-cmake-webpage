@@ -1,5 +1,9 @@
+{% include gh_variables.html %}
+
+<a href="{{ repo_url }}/blob/{{ default_branch }}/_includes/{{ include.file }}">
 <div class="language-{{ include.lang }} highlighter-rouge">
 {% highlight include.lang %}
 {% include {{ include.file }} %}
 {% endhighlight %}
 </div>
+</a>
