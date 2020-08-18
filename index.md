@@ -19,10 +19,6 @@ eventbrite:           # optional: alphanumeric key for Eventbrite registration, 
 ---
 
 
-{% comment %}
-For a workshop please delete the following block
-{% endcomment %}
-
 {% if page.carpentry != site.carpentry %}
 <div class="alert alert-warning">
 You specified <code>carpentry: {{page.carpentry}}</code> in <code>index.md</code> and
@@ -31,11 +27,17 @@ see the changes take effect locally.
 </div>
 {% endif %}
 
+Welcome to HSF CMake tutorial! The aim of this tutorial is to cover the basics of using CMake. This
+tutorial is based on the online book [Modern CMake][], with a focus on CMake 3.14+. This is in what
+is [called the "More Modern" era](https://github.com/Bagira80/More-Modern-CMake) of CMake (roughly
+defined as 3.12+), and includes the fantastic command line improvements in CMake π (3.14).
 
+This workshop covers the basics of making and building a project, and some details of design.
 
-Welcome to the FIRST-HEP CMake tutorial! The aim of this tutorial is to cover the basics of using CMake. This tutorial is based on the online book [Modern CMake][], with a focus on CMake 3.14+. This is in what is [called the "More Modern" era](https://github.com/Bagira80/More-Modern-CMake) of CMake (which is 3.12+), and includes the fantastic command line improvements in CMake π (notes for 3.11+ compatible features will be included usually). We will cover the basics of making and building a project, and some details of design.
-
-First taught at the [2019 USATLAS Computing Bootcamp at LBNL](https://smeehan12.github.io/2019-08-19-usatlas-computing-bootcamp/).
+Designed and first taught at the [2019 USATLAS Computing Bootcamp at
+LBNL](https://smeehan12.github.io/2019-08-19-usatlas-computing-bootcamp/) with the support of
+[FIRST-HEP][] and [IRIS-HEP][]. Also taught at the [2020 USATALS Computing Bootcamp
+2020](https://matthewfeickert.github.io/usatlas-computing-bootcamp-2020/)
 
 > ## Prereqs
 >
