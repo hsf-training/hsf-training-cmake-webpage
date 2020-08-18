@@ -60,5 +60,6 @@ First taught at the [2019 USATLAS Computing Bootcamp at LBNL](https://smeehan12.
 >
 {: .prereq}
 
+{% include curriculum.html %}
 
 {% include links.md %}
