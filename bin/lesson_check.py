@@ -76,6 +76,8 @@ KNOWN_CODEBLOCKS = {
     'output',
     'source',
     'language-bash',
+    'language-c',
+    'language-cmake',
     'html',
     'language-make',
     'language-matlab',
