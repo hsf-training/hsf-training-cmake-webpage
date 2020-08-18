@@ -40,9 +40,7 @@ First, take a look at the main [`CMakeLists.txt`][] file. This is an example of 
 in CMake 3.14, so enjoy it for a minute. Now let's look at specifics!
 
 <details><summary>Click to see CMakeLists.txt</summary>
-{% highlight cmake%}
-{% include code/03-structure/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/03-structure/CMakeLists.txt" %}
 </details>
 
 ### Protect project code
@@ -78,9 +76,7 @@ prefer git submodules in `/extern`.
 Now follow the `add_subdirectory` command to see the src folder, where a library is created.
 
 <details><summary>Click to see src/CMakeLists.txt</summary>
-{% highlight cmake%}
-{% include code/03-structure/src/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/03-structure/src/CMakeLists.txt" %}
 </details>
 
 
@@ -108,9 +104,7 @@ Now take a look at `apps/CMakeLists.txt`. This one is pretty simple, since all t
 using our library was done on the library target, as it should be.
 
 <details><summary>Click to see apps/CMakeLists.txt</summary>
-{% highlight cmake%}
-{% include code/03-structure/apps/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/03-structure/apps/CMakeLists.txt" %}
 </details>
 
 ### Docs and Tests
@@ -119,15 +113,11 @@ using our library was done on the library target, as it should be.
 Feel free to look at `docs` and `tests` for their `CMakeLists.txt`.
 
 <details><summary>Click to see docs/CMakeLists.txt</summary>
-{% highlight cmake%}
-{% include code/03-structure/docs/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/03-structure/docs/CMakeLists.txt" %}
 </details>
 
 <details><summary>Click to see tests/CMakeLists.txt</summary>
-{% highlight cmake%}
-{% include code/03-structure/tests/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/03-structure/tests/CMakeLists.txt" %}
 </details>
 
 > ## More reading

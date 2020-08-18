@@ -88,9 +88,7 @@ cd cmake_workshop/code/00-intro
 {%- endcapture %}
 {{ tmp | markdownify }}
 <div class="solution"><h2>Solution</h2>
-{% highlight cmake %}
-{% include code/00-intro/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/00-intro/CMakeLists.txt" %}
 </div>
 </div>
 
