@@ -1,4 +1,6 @@
-# workshop-template
+[![Build Status](https://travis-ci.org/hsf-training/hsf-training-cmake-webpage.svg?branch=gh-pages)](https://travis-ci.org/hsf-training/hsf-training-cmake-webpage)
+
+# CMake
 
 This repository is The Carpentries' ([Software Carpentry][swc-site], [Data Carpentry][dc-site], and [Library Carpentry][lc-site]'s)
 template for creating websites for workshops.
