@@ -31,9 +31,7 @@ make
 root -b -q -x ../CheckLoad.C
 ```
 
-{% highlight cmake %}
-{% include code/05a-root/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/05a-root/CMakeLists.txt" %}
 
 
 
@@ -41,8 +39,6 @@ root -b -q -x ../CheckLoad.C
 
 Change to the `code/05b-root` directory. Run the same command above.
 
-{% highlight cmake %}
-{% include code/05b-root/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/05b-root/CMakeLists.txt" %}
 
 {% include links.md %}

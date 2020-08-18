@@ -128,9 +128,7 @@ definitions on `simple_lib`.
 {%- endcapture %}
 {{ tmp | markdownify }}
 <div class="solution"><h2>Solution</h2>
-{% highlight cmake %}
-{% include code/01-simple/CMakeLists.txt %}
-{% endhighlight %}
+{% include hl_code.html lang="cmake" file="code/01-simple/CMakeLists.txt" %}
 </div>
 </div>
 
