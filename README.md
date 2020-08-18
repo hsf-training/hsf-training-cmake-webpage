@@ -45,4 +45,3 @@ To cite this lesson, please consult with [CITATION](CITATION)
 [slack-badge]: https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg
 [IRIS-HEP]: https://iris-hep.org
 [FIRST-HEP]: http://first-hep.org
-
