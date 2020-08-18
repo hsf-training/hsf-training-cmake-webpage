@@ -181,6 +181,11 @@ blockquote :not(h2) + p {
     padding-top: 1em;
 }
 
+// A linked div should not be underlined
+a.no-underline:hover {
+  text-decoration: none;
+}
+
 //----------------------------------------
 // Override Bootstrap settings.
 //----------------------------------------

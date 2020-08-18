@@ -1,9 +1,10 @@
 {% include gh_variables.html %}
 
-<a href="{{ repo_url }}/blob/{{ default_branch }}/_includes/{{ include.file }}">
-<div class="language-{{ include.lang }} highlighter-rouge">
-{% highlight include.lang %}
+<a href="{{ repo_url }}/blob/{{ default_branch }}/_includes/{{ include.file }}" class="no-underline">
+{% capture tmp %}
+```{{ include.lang }}
 {% include {{ include.file }} %}
-{% endhighlight %}
-</div>
+```
+{% endcapture %}
+{{ tmp | markdownify }}
 </a>
