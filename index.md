@@ -1,6 +1,6 @@
 ---
 layout: lesson      # DON'T CHANGE THIS.
-carpentry: "swc"      # what kind of Carpentry (must be either "lc" or "dc" or "swc").
+carpentry: "hsf"      # what kind of Carpentry (must be either "lc" or "dc" or "swc").
                       # Be sure to update the Carpentry type in _config.yml as well.
 venue: "Virtual"         # brief name of host site without address (e.g., "Euphoric State University")
 address: "Zoom"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
