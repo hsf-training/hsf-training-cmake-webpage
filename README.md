@@ -39,7 +39,10 @@ A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
 To cite this lesson, please consult with [CITATION](CITATION)
 
 [lesson-example]: https://carpentries.github.io/lesson-example
-[issues]:
+[issues]: https://github.com/hsf-training/hsf-training-cmake-webpage/issues
 [Contributing to a Project]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
 [good_first_issue]: https://img.shields.io/badge/-good%20first%20issue-gold.svg
 [slack-badge]: https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg
+[IRIS-HEP]: https://iris-hep.org
+[FIRST-HEP]: http://first-hep.org
+
