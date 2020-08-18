@@ -1,6 +1,6 @@
 # Contributing
 
-[The Carpentries][c-site] ([Software Carpentry][swc-site], [Data Carpentry][dc-site], and [Library Carpentry][lc-site]) are open source projects,
+[HSF training][hsf-training] is an open source project,
 and we welcome contributions of all kinds:
 new lessons,
 fixes to existing material,
@@ -14,7 +14,7 @@ you agree that we may redistribute your work under [our license](LICENSE.md).
 In exchange,
 we will address your issues and/or assess your change proposal as promptly as we can,
 and help you become a member of our community.
-Everyone involved in [The Carpentries][c-site]
+Everyone involved in [HSF training][hsf-training]
 agrees to abide by our [code of conduct](CODE_OF_CONDUCT.md).
 
 ## How to Contribute
@@ -27,7 +27,7 @@ This is a good way to introduce yourself
 and to meet some of our community members.
 
 1.  If you do not have a [GitHub][github] account,
-    you can [send us comments by email][email].
+    you can write the convenors an email.
     However,
     we will be able to respond more quickly if you use one of the other methods described below.
 
@@ -45,24 +45,11 @@ and to meet some of our community members.
 
 ## Where to Contribute
 
-1.  If you wish to change this lesson,
-    please work in <https://github.com/swcarpentry/FIXME>,
-    which can be viewed at <https://swcarpentry.github.io/FIXME>.
+1.  If you wish to change the content of this lesson, work in <https://github.com/hsf-training/hsf-training-NAME-OF-MODULE>
 
-2.  If you wish to change the example lesson,
-    please work in <https://github.com/carpentries/lesson-example>,
-    which documents the format of our lessons
-    and can be viewed at <https://carpentries.github.io/lesson-example>.
-
-3.  If you wish to change the template used for workshop websites,
-    please work in <https://github.com/carpentries/workshop-template>.
-    The home page of that repository explains how to set up workshop websites,
-    while the extra pages in <https://carpentries.github.io/workshop-template>
-    provide more background on our design choices.
-
-4.  If you wish to change CSS style files, tools,
+2.  If you wish to change CSS style files, tools,
     or HTML boilerplate for lessons or workshops stored in `_includes` or `_layouts`,
-    please work in <https://github.com/carpentries/styles>.
+    please work in <https://github.com/hsf-training/hsf-styles>.
 
 ## What to Contribute
 
@@ -73,8 +60,7 @@ and submitting [bug reports][issues]
 about things that don't work, aren't clear, or are missing.
 If you are looking for ideas, please see the 'Issues' tab for
 a list of issues associated with this repository,
-or you may also look at the issues for [Data Carpentry][dc-issues], 
-[Software Carpentry][swc-issues], and [Library Carpentry][lc-issues] projects.
+or you may also look at all issues in [hsf-training][hsf-training-issues]
 
 Comments on issues and reviews of pull requests are just as welcome:
 we are smarter together than we are on our own.
@@ -128,24 +114,14 @@ repository for reference while revising.
 
 ## Other Resources
 
-General discussion of [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-happens on the [discussion mailing list][discuss-list],
-which everyone is welcome to join.
-You can also [reach us by email][email].
+More information on how to contribute or how to contact us: [HSF training home][hsf-training]
 
-[email]: mailto:admin@software-carpentry.org
-[dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
-[dc-lessons]: http://datacarpentry.org/lessons/
-[dc-site]: http://datacarpentry.org/
-[discuss-list]: http://lists.software-carpentry.org/listinfo/discuss
+[hsf-training-issues]: https://github.com/issues?q=user%3Ahsf-training+is%3Aopen
+[hsf-training]: hepsoftwarefoundation.org/workinggroups/training.html
+[email]: mailto:https://groups.google.com/forum/#!forum/hsf-training-wg
 [github]: https://github.com
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
 [how-contribute]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
 [issues]: https://guides.github.com/features/issues/
-[swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
-[swc-lessons]: https://software-carpentry.org/lessons/
-[swc-site]: https://software-carpentry.org/
-[c-site]: https://carpentries.org/
-[lc-site]: https://librarycarpentry.org/
-[lc-issues]: https://github.com/issues?q=user%3Alibrarycarpentry
+
