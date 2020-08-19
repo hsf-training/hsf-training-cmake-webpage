@@ -15,6 +15,7 @@ code/00-intro/CMakeLists.txt
 code/01-simple/CMakeLists.txt
 .bundle/
 .vendor/
+vendor/
 .docker-vendor/
 Gemfile.lock
 .*history
