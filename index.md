@@ -41,24 +41,9 @@ LBNL](https://smeehan12.github.io/2019-08-19-usatlas-computing-bootcamp/) with t
 
 > ## Prereqs
 >
-> On your computer, you need to have:
+> * Basic knowledge of C or C++
+> * [Basic unix shell](http://swcarpentry.github.io/shell-novice/)
 >
-> * `git`
-> * `cmake` (Version 3.14 or newer). See the [instructions here][CMake Instructions].
-> * A C++ compiler - system default is fine.
-> * `make` or `ninja`
->
-> A quick and minimal docker works well, too:
->
-> ```bash
-> docker run --rm -it alpine
-> apk add git g++ cmake make
-> git clone https://github.com/henryiii/cmake_workshop.git
-> cd cmake_workshop
-> ```
->
->
-> This does *not* make a volume, so you will lose whatever you do in here when it exits - that's probably a good thing mostly.
 >
 {: .prereq}
 
