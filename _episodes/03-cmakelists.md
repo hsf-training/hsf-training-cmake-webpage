@@ -1,13 +1,17 @@
 ---
-title: "Your first CMakeLists.txt file"
+title: Your first CMakeLists.txt file
 teaching: 10
 exercises: 10
 questions:
-- "How little can I get away with in my CMakeLists?"
+- How little can I get away with in my CMakeLists?
 objectives:
-- "Know how to write a CMakeLists.txt file"
+- Understand the deep implications of cmake_minimum_version
+- Know how to set up a project
+- Know how to make at least one target
 keypoints:
-- "Write CMakeLists.txt files"
+- The cmake_minimum_version setting has deep implications
+- You need a project line.
+- You should prepare one or more targets to do anything interesting.
 ---
 
 

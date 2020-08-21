@@ -4,6 +4,13 @@ layout: reference
 
 ## Glossary
 
-FIXME
+{:auto_ids}
+BSG
+:    Build system generator
+
+## Other material
+
+{% include showlinks.md %}
+
 
 {% include links.md %}

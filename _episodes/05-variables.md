@@ -1,13 +1,18 @@
 ---
-title: "Variables explained"
+title: Variables explained
 teaching: 10
 exercises: 10
 questions:
-- "How do variables work?"
+- How do variables work?
 objectives:
-- "Know how to use variables"
+- Learn about local variables.
+- Understand that cached variables persist across runs.
+- Know how to glob, and why you might not do it.
 keypoints:
-- "Work with variables in CMake"
+- Local variables work in this directory or below.
+- Cached variables are stored between runs.
+- You can access environment variables, properties, and more.
+- You can glob to collect files from disk, but it might not always be a good idea.
 ---
 
 
@@ -92,9 +97,15 @@ Since bool cached variables are so common for builds, there is a shortcut syntax
 
 ## Other variables
 
-You can get environment variables with `$ENV{name}`. Properties are a form of variable that is
-attached to a target; you can use `get_property` and `set_property`, or `get_target_properties` and
-`set_target_properties` (stylistic preference) to access and set these.
+You can get environment variables with `$ENV{name}`. You can check to see if an environment variable
+is defined with `if(DEFINED ENV{name})` (notice the missing `$`).
+
+
+Properties are a form of variable that is attached to a target; you can use `get_property` and
+`set_property`, or `get_target_properties` and `set_target_properties` (stylistic preference) to
+access and set these. You can [see a list of all
+properties](https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html) by CMake version;
+there is no way to get this programmatically.
 
 
 > ## Handy tip:

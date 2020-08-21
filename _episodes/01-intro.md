@@ -1,15 +1,17 @@
 ---
-title: "Introduction"
+title: Introduction
 teaching: 10
 exercises: 0
 questions:
-- "What is CMake, anyway?"
-- "What is the difference between a build system and a build system generator?"
+- What is the difference between a build system and a build system generator?
 objectives:
-- "Understand why CMake is used"
-- "Understand that CMake is not Make"
+- Learn about build systems and build system generators.
+- Understand why CMake is used.
+- Newer CMake is better.
 keypoints:
-- "CMake is a build system generator"
+- Build systems describe exactly how to build targets.
+- Build system generators describe general relationships.
+- Modern CMake is simpler and reduces the chance of build problems.
 ---
 
 Building code is hard. You need long commands to build each part of your code; and you need do to this on many parts of your code.
@@ -72,13 +74,6 @@ up).
 
 There are some other places to find good information on the web. Here are some of them:
 
-* [Modern CMake][]: The book this tutorial derives from.
-* [The official help](https://cmake.org/cmake/help/latest/): Really amazing documentation. Nicely organized, great search, and you can toggle versions at the top. It just doesn't have a great "best practices tutorial", which is what this book tries to fill in.
-* [Effective Modern CMake](https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1): A great list of do's and don'ts.
-* [Embracing Modern CMake](https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/): A post with good description of the term
-* [It's time to do CMake Right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/): A nice set of best practices for Modern CMake projects.
-* [The Ultimate Guide to Modern CMake](https://rix0r.nl/blog/2015/08/13/cmake-guide/): A slightly dated post with similar intent.
-* [More Modern CMake](https://youtu.be/y7ndUhdQuU8): A great presentation from Meeting C++ 2018 that recommends CMake 3.12+. This talk makes calls CMake 3.0+ "Modern CMake" and CMake 3.12+ "More Modern CMake".
-* [toeb/moderncmake](https://github.com/toeb/moderncmake): A nice presentation and examples about CMake 3.5+, with intro to syntax through project organization
+{% include showlinks.md %}
 
 {% include links.md %}

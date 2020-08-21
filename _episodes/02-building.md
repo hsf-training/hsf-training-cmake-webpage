@@ -1,13 +1,20 @@
 ---
-title: "Building with CMake"
+title: Building with CMake
 teaching: 10
 exercises: 10
 questions:
-- "How do I build a project?"
+- How do I build a project?
 objectives:
-- "Know how to build a project with CMake"
+- Have a reference for installing CMake.
+- Learn how to build an existing project.
+- Customize the build.
+- Learn how to do some basic debugging.
+
 keypoints:
-- "Use out-of-source builds"
+- Build a project.
+- Use out-of-source builds.
+- Build options and customization.
+- Debug a CMakeLists easily.
 ---
 
 # Installing CMake

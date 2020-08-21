@@ -1,13 +1,13 @@
 ---
-title: "ROOT"
+title: ROOT
 teaching: 10
 exercises: 10
 questions:
-- "How do I use ROOT?"
+- How do I use ROOT?
 objectives:
-- "Use ROOT a couple of different ways"
+- Use ROOT a couple of different ways
 keypoints:
-- "ROOT has a CONFIG package"
+- ROOT has a CONFIG package you can use to integrate with CMake.
 ---
 
 Let's try a couple of ROOT examples; one with the classic variable/global configure and one with the
@@ -27,7 +27,7 @@ Change to the `code/05a-root` directory.  Run:
 ```bash
 cmake -S . -B build
 cd build
-make
+cmake --build .
 root -b -q -x ../CheckLoad.C
 ```
 

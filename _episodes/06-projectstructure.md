@@ -1,13 +1,14 @@
 ---
-title: "Project Structure"
+title: Project Structure
 teaching: 10
 exercises: 10
 questions:
-- "What should my project look like?"
+- What should my project look like?
 objectives:
-- "Understand best practices for project structure"
+- Know some best practices for project structure
 keypoints:
-- "Projects should have a standard structure"
+- Projects should be well organised.
+- Subproject CMakeLists are used for tests and more.
 ---
 
 
