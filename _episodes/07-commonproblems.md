@@ -1,14 +1,17 @@
 ---
-title: "Common Problems and Solutions"
+title: Common Problems and Solutions
 teaching: 5
 exercises: 0
 questions:
-- "What could go possibly wrong?"
+- What could go possibly wrong?
 objectives:
-- "Identify some common mistakes"
-- "Fix problems"
+- Identify some common mistakes
+- Avoid making common mistakes
 keypoints:
-- "Some mistakes are fixable"
+- Setting a CMake version too low.
+- Avoid building inplace.
+- How to select a compiler.
+- How to work with spaces in paths.
 ---
 
 
@@ -24,7 +27,8 @@ Okay, I had to put this one in. But in some cases, just increasing this number f
 or less, for example, has a tendency to do the wrong thing when linking on macOS.
 
 Solution: Either set a high minimum version or use the version range feature and CMake 3.12 or
-better.
+better. The lowest version you should ever choose is 3.4 even for an ultra-conservative project;
+several common issues were fixed by that version.
 
 ## 2: Building inplace
 
@@ -51,9 +55,43 @@ mistake.
 ## 3: Picking a compiler
 
 CMake may pick the wrong compiler on systems with multiple compilers. You can use the environment
-variables `CC` and `CXX` when you first configure, or CMake variables - but you need to pick the
-compiler *on the first run*; you can't just reconfigure to get a new compiler.
+variables `CC` and `CXX` when you first configure, or CMake variables `CMAKE_CXX_COMPILER`, etc.
+- but you need to pick the compiler *on the first run*; you can't just reconfigure to get a new
+compiler.
 
 
+## 4: Spaces in paths
+
+CMake's list and argument system is very crude (it is a macro language); you can use it to your
+advantage, but it can cause issues. (This is also why there is no "splat" operator in CMake, like
+`f(*args)` in Python.) If you have multiple items, that's a list (distinct arguments):
+
+```cmake
+set(VAR a b v)
+```
+
+The value of `VAR` is a list with three elements, or the string `"a;b;c"` (the two things are exactly
+the same). So, if you do:
+
+```cmake
+set(MY_DIR "/path/with spaces/")
+target_include_directories(target PRIVATE ${MY_DIR})
+```
+
+that is identical to:
+
+```cmake
+target_include_directories(target PRIVATE /path/with spaces/)
+```
+
+which is two separate arguments, which is not at all what you wanted. The solution is to surround
+the original call with quotes:
+
+```cmake
+set(MY_DIR "/path/with spaces/")
+target_include_directories(target PRIVATE "${MY_DIR}")
+```
+
+Now you will correctly set a single include directory with spaces in it.
 
 {% include links.md %}

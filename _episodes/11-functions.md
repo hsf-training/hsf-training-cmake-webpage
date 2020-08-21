@@ -1,13 +1,14 @@
 ---
-title: "Functions in CMake"
+title: Functions in CMake
 teaching: 10
 exercises: 0
 questions:
-- "How do I write my own CMake commands?"
+- How do I write my own CMake commands?
 objectives:
-- "Know how to make a macro or a function in CMake"
+- Know how to make a macro or a function in CMake.
 keypoints:
-- "CMake can be very powerfully customized"
+- Functions and macros allow factorization.
+- CMake has an argument parsing function to help with making functions.
 ---
 
 Let's take a look at making a CMake macro or function. The only difference is in scope; a macro does

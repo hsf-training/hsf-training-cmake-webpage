@@ -1,14 +1,15 @@
 ---
-title: "Debugging"
+title: Debugging
 teaching: 10
 exercises: 10
 questions:
-- "How do I debug everything?"
+- How do I debug everything?
 objectives:
-- "Know how to find problems in CMake"
-- "Know how to set up builds for debugging"
+- Know how to find problems in CMake
+- Know how to set up builds for debugging
 keypoints:
-- "CMake is great for different builds"
+- There are several methods for debugging your CMake code.
+- CMake can help you debug and profile your source code.
 ---
 
 Debugging is easy with CMake. We'll cover two forms of debugging: debugging your CMake code, and
@@ -134,5 +135,19 @@ Note that CMake defaults to an "empty" build type, which is neither optimized no
 specify a build type. The empty build type uses the environment variables `CFLAGS` and `CXXFLAGS`,
 allowing CMake to integrate with Linux package managers. Otherwise, you can set the release and
 debug flags separately.
+
+# Common needs
+
+There are several common utilities that CMake can integrate with to help you with your builds. Here
+are just a few:
+
+* `CMAKE_CXX_COMPILER_LAUNCHER` can set up a compiler launcher, like `ccache`, to speed up your
+  builds.
+* `CMAKE_CXX_CLANG_TIDY` can run clang-tidy to help you clean up your code.
+* `CMAKE_CXX_CPPCHECK` for cppcheck.
+* `CMAKE_CXX_CPPLINT` for cpplint.
+* `CMAKE_CXX_INCLUDE_WHAT_YOU_USE` for iwyu.
+
+You can set these when building if you want.
 
 {% include links.md %}

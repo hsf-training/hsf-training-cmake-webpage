@@ -1,14 +1,15 @@
 ---
-title: "Finding Packages"
+title: Finding Packages
 teaching: 10
 exercises: 0
 questions:
-- "How do I search for packages?"
+- How do I search for packages?
 objectives:
-- "Understand FindPackage.cmake"
-- "Understand PackageConfig.cmake"
+- Understand FindPackage.cmake
+- Understand PackageConfig.cmake
 keypoints:
-- "CMake can find packages for you"
+- A FindPackage.cmake file can factor out package discovery for a package you don't own.
+- A PackageConfig.cmake helps others find your package.
 ---
 
 You can [search for packages](https://cmake.org/cmake/help/latest/command/find_package.html) in

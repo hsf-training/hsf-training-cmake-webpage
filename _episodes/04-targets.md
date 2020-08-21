@@ -1,13 +1,19 @@
 ---
-title: "Working with Targets"
+title: Working with Targets
 teaching: 10
 exercises: 15
 questions:
-- "How do targets work?"
+- How do targets work?
 objectives:
-- "Know how to set up targets"
+- Know how to set up targets
+- Understand linking and INTERFACE properties
+- Make INTERFACE targets
 keypoints:
-- "Work with targets in CMake"
+- Libraries and executables are targets.
+- Targets have lots of useful properties.
+- Targets can be linked to other target.
+- You can control what parts of a target get inherited when linking.
+- You can make INTERFACE targets instead of making variables.
 ---
 
 
@@ -169,6 +175,20 @@ imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries 
 (starting in CMake 3.11), and they can have `::` in their name. (`ALIAS` libraries, which simply
 rename some other library, are also allowed to have `::`). Most of the time you will get imported
 libraries from other places, and will not be making your own.
+
+> ## INTERFACE IMPORETED
+>
+> What about `INTERFACE IMPORTED`? The difference comes down to two things:
+>
+> 1. `IMPORTED` targets are not exportable. If you save your targets, you can't save IMPORTED ones -
+>    they need to be recreated (or found again).
+> 2. `IMPORTED` header include directories will always be marked as `SYSTEM`.
+>
+> Therefore, an `IMPORTED` target should represent something that is not directly part of your
+> package.
+{:.callout}
+
+
 
 > ## More reading
 >
