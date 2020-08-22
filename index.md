@@ -36,7 +36,7 @@ This workshop covers the basics of making and building a project, and some detai
 
 Designed and first taught at the [2019 USATLAS Computing Bootcamp at
 LBNL](https://smeehan12.github.io/2019-08-19-usatlas-computing-bootcamp/) with the support of
-[FIRST-HEP][] and [IRIS-HEP][]. Also taught at the [2020 USATALS Computing Bootcamp](https://matthewfeickert.github.io/usatlas-computing-bootcamp-2020/).
+[FIRST-HEP][] and [IRIS-HEP][]. Also taught at the [2020 USATLAS Computing Bootcamp](https://matthewfeickert.github.io/usatlas-computing-bootcamp-2020/).
 
 > ## Prereqs
 >
