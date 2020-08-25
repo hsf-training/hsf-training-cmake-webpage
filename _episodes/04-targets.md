@@ -142,13 +142,13 @@ definitions on `simple_lib`.
 ### Things you can set on targets
 * [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html):
   Other targets; can also pass library names directly
-* `target_include_directories`: Include directories
-* `target_compile_features`: The compiler features you need activated, like `cxx_std_11`
-* `target_compile_definitions`: Definitions
-* `target_compile_options`: More general compile flags
-* `target_link_directories`: Don't use, give full paths instead (CMake 3.13+)
-* `target_link_options`: General link flags (CMake 3.13+)
-* `target_sources`: Add source files
+* [`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html): Include directories
+* [`target_compile_features`](https://cmake.org/cmake/help/latest/command/target_compile_features.html): The compiler features you need activated, like `cxx_std_11`
+* [`target_compile_definitions`](https://cmake.org/cmake/help/latest/command/target_compile_definitions.html): Definitions
+* [`target_compile_options`](https://cmake.org/cmake/help/latest/command/target_compile_options.html): More general compile flags
+* [`target_link_directories`](https://cmake.org/cmake/help/latest/command/target_link_directories.html): Don't use, give full paths instead (CMake 3.13+)
+* [`target_link_options`](https://cmake.org/cmake/help/latest/command/target_link_options.html): General link flags (CMake 3.13+)
+* [`target_sources`](https://cmake.org/cmake/help/latest/command/target_sources.html): Add source files
 
 See more [commands here](https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html).
 
