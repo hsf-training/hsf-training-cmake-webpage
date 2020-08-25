@@ -121,7 +121,7 @@ nice, clear error if you set `CXX_STANDARD` too low). `target_compile_features` 
 Get this repository and go to the example. Try to write a CMakeLists that will correctly build.
 
 ~~~bash
-git clone https://github.com/henryiii/cmake_workshop.git
+git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
 cd cmake_workshop/code/01-simple
 ~~~
 

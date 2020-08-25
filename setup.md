@@ -34,7 +34,7 @@ A quick and minimal docker:
 ```bash
 docker run --rm -it alpine
 apk add git g++ cmake make
-git clone https://github.com/henryiii/cmake_workshop.git
+git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
 cd cmake_workshop
 ```
 
@@ -47,7 +47,7 @@ This will allow you to keep your changes, which is both good (if you want to rev
 (if you want to know exactly what went into making them).
 
 ```bash
-git clone https://github.com/henryiii/cmake_workshop.git
+git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
 cd cmake_workshop
 docker run -v $PWD:/cmake_work --rm -it alpine
 

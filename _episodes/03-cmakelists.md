@@ -86,7 +86,7 @@ add_executable(myexample simple.cpp)
 Build and run the example code with a `CMakeLists.txt` similar to the one above.
 
 ~~~bash
-git clone https://github.com/henryiii/cmake_workshop.git
+git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
 cd cmake_workshop/code/00-intro
 ~~~
 {%- endcapture %}
