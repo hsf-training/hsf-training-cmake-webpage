@@ -38,9 +38,9 @@ set(MY_VARIABLE "I am a variable")
 message(STATUS "${MY_VARIABLE}")
 ```
 
-Here we see the set command, which sets a variable, and the message command, which prints out a
-string. We are printing a `STATUS` message - there are other types (many other types in CMake
-3.15+).
+Here we see the [`set`][] command, which sets a variable, and the [`message`] command, which prints
+out a string. We are printing a `STATUS` [`message`][] - there are other types (many other types in
+CMake 3.15+).
 
 > ## More about variables
 >
@@ -89,10 +89,11 @@ You can use `FORCE` to set a cached variable even if it already set; this should
 Since cached variables are global, sometimes they get used as a makeshift global variable - the
 keyword `INTERNAL` is identical to `STRING FORCE`, and hides the variable from listings/GUIs.
 
-Since bool cached variables are so common for builds, there is a shortcut syntax for making one:
+Since bool cached variables are so common for builds, there is a shortcut syntax for making one
+using [`option`][]:
 
 ```cmake
- option(MY_OPTION "On or off" OFF)
+option(MY_OPTION "On or off" OFF)
 ```
 
 ## Other variables
@@ -101,29 +102,30 @@ You can get environment variables with `$ENV{name}`. You can check to see if an 
 is defined with `if(DEFINED ENV{name})` (notice the missing `$`).
 
 
-Properties are a form of variable that is attached to a target; you can use `get_property` and
-`set_property`, or `get_target_properties` and `set_target_properties` (stylistic preference) to
+Properties are a form of variable that is attached to a target; you can use [`get_property`][] and
+[`set_property`][], or [`get_target_properties`][] and [`set_target_properties`][] (stylistic preference) to
 access and set these. You can [see a list of all
 properties](https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html) by CMake version;
 there is no way to get this programmatically.
 
 
 > ## Handy tip:
-> Use `include(CMakePrintHelpers)` to add the useful commands `cmake_print_properties` and
-> `cmake_print_variables` to save yourself some typing when debugging variables and properties.
+> Use [`include(CMakePrintHelpers)`][`CMakePrintHelpers`] to add the useful commands
+> `cmake_print_properties` and `cmake_print_variables` to save yourself some typing when debugging
+> variables and properties.
 {:.callout}
 
 ## Target properties and variables
 
 You have seen targets; they have properties attached that control their behavior. Many of these
-properties, such as `CXX_EXTENSIONS`, have a matching variable that starts with `CMAKE_`, such as
-`CMAKE_CXX_EXTENSIONS`, that will be used to initialize them. So you can using set property on each
-target by setting a variable before making the targets.
+properties, such as [`CXX_EXTENSIONS`][], have a matching variable that starts with `CMAKE_`, such
+as [`CMAKE_CXX_EXTENSIONS`][], that will be used to initialize them. So you can using set property
+on each target by setting a variable before making the targets.
 
 ## Globbing
 
-There are several commands that help with strings, files, lists, and the like. Let's take a quick
-look at one of the most interesting: glob.
+There are several commands that help with [`string`][]s, [`file`][]s, [`lists`][], and the like.
+Let's take a quick look at one of the most interesting: glob.
 
 ```cmake
 file(GLOB OUTPUT_VAR *.cxx)
@@ -150,5 +152,7 @@ classic rule of CMake was "never glob"; the new rule is "never glob, but if you 
 > * Also see [CMake's docs](https://cmake.org/cmake/help/latest/index.html)
 {:.checklist}
 
+
+{% include cmake_links.md %}
 
 [Modern CMake basics/variables]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/variables.html

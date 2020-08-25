@@ -33,7 +33,7 @@ This creates an "executable" target with the name `mytarget`. Target names must 
 is a way to set the executable name to something other than the target name if you really want to).
 
 Targets are much like "objects" in other languages; they have properties (member variables) that
-hold information. The `SOURCE_FILES` property, for example, will have `simple.cpp` in it.
+hold information. The [`SOURCES`][] property, for example, will have `simple.cpp` in it.
 
 Another type of target is a library:
 
@@ -49,7 +49,7 @@ You can make non-built libraries too. More on that later, once we see what we ca
 ## Linking
 
 Once you have several targets, you can describe the relationship between them with
-`target_link_libraries` and a keyword; one of `PUBLIC`, `PRIVATE`, and `INTERFACE`. Don't forget
+[`target_link_libraries`][] and a keyword; one of `PUBLIC`, `PRIVATE`, and `INTERFACE`. Don't forget
 this keyword when making a library! CMake goes into an old compatibility mode for this target that
 generally breaks things.
 
@@ -97,23 +97,23 @@ fields at the same time.
 
 ## Example 1: Include directories
 
-When you run `target_include_directory(TargetA PRIVATE mydir)`, then the `INCLUDE_DIRECTORIES`
-property of `TargetA` has `mydir` appended. If you use the keyword `INTERFACE` instead, then
-`INTERFACE_INCLUDE_DIRECTORIES` is appended to, instead. If you use `PUBLIC`, then both properties
-are appended to at the same time.
+When you run [`target_include_directory(TargetA PRIVATE mydir)`][`target_include_directory`], then
+the [`INCLUDE_DIRECTORIES`][] property of `TargetA` has `mydir` appended. If you use the keyword
+`INTERFACE` instead, then [`INTERFACE_INCLUDE_DIRECTORIES`][] is appended to, instead. If you use
+`PUBLIC`, then both properties are appended to at the same time.
 
 ## Example 2: C++ standard
 
-There is a C++ standard property - `CXX_STANDARD`. You can set this property, and like many
-properties in CMake, it gets it's default value from a `CMAKE_CXX_STANDARD` variable if it is set,
-but there is no INTERFACE version - you cannot force a `CXX_STANDARD` via a target. What would you
+There is a C++ standard property - [`CXX_STANDARD`][]. You can set this property, and like many
+properties in CMake, it gets it's default value from a [`CMAKE_CXX_STANDARD`][] variable if it is set,
+but there is no INTERFACE version - you cannot force a [`CXX_STANDARD`][] via a target. What would you
 do if you had a C++11 interface target and a C++14 interface target and linked to both?
 
 By the way, there _is_ a way to handle this - you can specify the minimum compile features you need
 to compile a target; the `std_cxx_11` and similar meta-features are perfect for this - your target
-will compile with at least the highest level specified, unless `CXX_STANDARD` is set (and that's a
-nice, clear error if you set `CXX_STANDARD` too low). `target_compile_features` can fill
-`COMPILE_FEATURES` and `INTERFACE_COMPILE_FEATURES`, just like directories in example 1.
+will compile with at least the highest level specified, unless [`CXX_STANDARD`][] is set (and that's
+a nice, clear error if you set [`CXX_STANDARD`][] too low). [`target_compile_features`][] can fill
+[`COMPILE_FEATURES`][] and [`INTERFACE_COMPILE_FEATURES`][], just like directories in example 1.
 
 
 <div class="challenge"><h2>Try it out</h2>
@@ -129,8 +129,8 @@ The files here are:
 * simple_lib.cpp: Must be compiled with `MYLIB_PRIVATE` and `MYLIB_PUBLIC` defined.
 * simple_example.cpp: Must be compiled with `MYLIB_PUBLIC` defined, but not `MYLIB_PRIVATE`
 
-Use `target_compile_definitions(<target> <private or public> <definition(s)>)` to set the
-definitions on `simple_lib`.
+Use [`target_compile_definitions(<target> <private or public>
+<definition(s)>)`][`target_compile_definitions`] to set the definitions on `simple_lib`.
 {%- endcapture %}
 {{ tmp | markdownify }}
 <div class="solution"><h2>Solution</h2>
@@ -140,15 +140,14 @@ definitions on `simple_lib`.
 
 
 ### Things you can set on targets
-* [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html):
-  Other targets; can also pass library names directly
-* [`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html): Include directories
-* [`target_compile_features`](https://cmake.org/cmake/help/latest/command/target_compile_features.html): The compiler features you need activated, like `cxx_std_11`
-* [`target_compile_definitions`](https://cmake.org/cmake/help/latest/command/target_compile_definitions.html): Definitions
-* [`target_compile_options`](https://cmake.org/cmake/help/latest/command/target_compile_options.html): More general compile flags
-* [`target_link_directories`](https://cmake.org/cmake/help/latest/command/target_link_directories.html): Don't use, give full paths instead (CMake 3.13+)
-* [`target_link_options`](https://cmake.org/cmake/help/latest/command/target_link_options.html): General link flags (CMake 3.13+)
-* [`target_sources`](https://cmake.org/cmake/help/latest/command/target_sources.html): Add source files
+* [`target_link_libraries`][]: Other targets; can also pass library names directly
+* [`target_include_directories`][]: Include directories
+* [`target_compile_features`][]: The compiler features you need activated, like `cxx_std_11`
+* [`target_compile_definitions`][]: Definitions
+* [`target_compile_options`][]: More general compile flags
+* [`target_link_directories`][]: Don't use, give full paths instead (CMake 3.13+)
+* [`target_link_options`][]: General link flags (CMake 3.13+)
+* [`target_sources`][]: Add source files
 
 See more [commands here](https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html).
 
@@ -178,7 +177,8 @@ libraries from other places, and will not be making your own.
 
 > ## INTERFACE IMPORETED
 >
-> What about `INTERFACE IMPORTED`? The difference comes down to two things:
+> What about [`INTERFACE IMPORTED`](https://cmake.org/cmake/help/latest/command/add_library.html#id6)?
+> The difference comes down to two things:
 >
 > 1. `IMPORTED` targets are not exportable. If you save your targets, you can't save IMPORTED ones -
 >    they need to be recreated (or found again).
@@ -195,6 +195,8 @@ libraries from other places, and will not be making your own.
 > * Based on [Modern CMake basics][]
 > * Also see [CMake's docs](https://cmake.org/cmake/help/latest/index.html)
 {:.checklist}
+
+{% include cmake_links.md %}
 
 
 [Modern CMake Basics]: https://cliutils.gitlab.io/modern-cmake/chapters/basics.html

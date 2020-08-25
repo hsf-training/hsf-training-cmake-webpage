@@ -55,9 +55,9 @@ mistake.
 ## 3: Picking a compiler
 
 CMake may pick the wrong compiler on systems with multiple compilers. You can use the environment
-variables `CC` and `CXX` when you first configure, or CMake variables `CMAKE_CXX_COMPILER`, etc.
-- but you need to pick the compiler *on the first run*; you can't just reconfigure to get a new
-compiler.
+variables [`CC`][] and [`CXX`][] when you first configure, or CMake variables
+[`CMAKE_CXX_COMPILER`][], etc. - but you need to pick the compiler *on the first run*; you can't
+just reconfigure to get a new compiler.
 
 
 ## 4: Spaces in paths
@@ -95,3 +95,4 @@ target_include_directories(target PRIVATE "${MY_DIR}")
 Now you will correctly set a single include directory with spaces in it.
 
 {% include links.md %}
+{% include cmake_links.md %}

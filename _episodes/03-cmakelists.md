@@ -5,7 +5,7 @@ exercises: 10
 questions:
 - How little can I get away with in my CMakeLists?
 objectives:
-- Understand the deep implications of cmake_minimum_version
+- Understand the deep implications of `cmake_minimum_version`
 - Know how to set up a project
 - Know how to make at least one target
 keypoints:
@@ -37,15 +37,16 @@ add_executable(myexample simple.cpp)
 
 Let's look at the three lines:
 
-1. The `cmake_minimum_required` command sets the policies so that the build is exactly like it would
-   be on the listed version of CMake - in other words, CMake "dumbs itself down" to the version you
-   request for any features that could produce a different build. This makes CMake almost perfectly
-   backwards compatible.
-2. You need to be working on a project, and it needs at least a name. CMake assumes a `CXX` (that's
-   C++) and `C` mixed project if you don't give any `LANGUAGES`.
+1. The [`cmake_minimum_required`][] command sets the policies so that the build is exactly like it
+   would be on the listed version of CMake - in other words, CMake "dumbs itself down" to the
+   version you request for any features that could produce a different build. This makes CMake
+   almost perfectly backwards compatible.
+2. You need to be working on a [`project`], and it needs at least a name. CMake assumes a `CXX`
+   (that's C++) and `C` mixed project if you don't give any [`LANGUAGES`][`project`].
 3. You need at least one library or executable to do anything interesting. The "thing" you make here
    is called a "target", and the executable/library has the same name, by default, and it has to be
-   unique in the project.
+   unique in the project. You use [`add_executable`][] for programs, and [`add_library`][] for
+   libraries.
 
 Those commands have a few extra arguments that you can give:
 
@@ -93,5 +94,7 @@ cd hsf-training-cmake-webpage/code/00-intro
 >
 > * Based on [Modern CMake basics][]
 {:.checklist}
+
+{% include cmake_links.md %}
 
 [Modern CMake Basics]: https://cliutils.gitlab.io/modern-cmake/chapters/basics.html
