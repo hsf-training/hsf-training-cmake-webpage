@@ -2,10 +2,15 @@ cmake_minimum_required(VERSION 3.14...3.18)
 
 project(RootTargetExample LANGUAGES CXX)
 
-find_package(ROOT 6.20 CONFIG REQUIRED)
+# 6.16 fixes a bug in ROOT_EXE_LINKER_FLAGS, expecially on macOS
+find_package(ROOT 6.16 CONFIG REQUIRED)
 
 # Get the generate dictionary command from ROOT
-include("${ROOT_DIR}/RootMacros.cmake")
+if(ROOT_VERSION VERSION_LESS 6.20)
+  include("${ROOT_DIR}/modules/RootNewMacros.cmake")
+else()
+  include("${ROOT_DIR}/RootMacros.cmake")
+endif()
 
 # Make the dictionary, produces G__DictExample.cxx
 root_generate_dictionary(G__DictExample DictExample.h LINKDEF DictLinkDef.h)
