@@ -122,7 +122,7 @@ Get this repository and go to the example. Try to write a CMakeLists that will c
 
 ~~~bash
 git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
-cd cmake_workshop/code/01-simple
+cd hsf-training-cmake-webpage/code/01-simple
 ~~~
 
 The files here are:

@@ -87,7 +87,7 @@ Build and run the example code with a `CMakeLists.txt` similar to the one above.
 
 ~~~bash
 git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
-cd cmake_workshop/code/00-intro
+cd hsf-training-cmake-webpage/code/00-intro
 ~~~
 {%- endcapture %}
 {{ tmp | markdownify }}
