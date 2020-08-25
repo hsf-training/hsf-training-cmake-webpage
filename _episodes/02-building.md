@@ -104,7 +104,7 @@ se, but you might not be familiar with it. To pick Clang:
 CC=clang CXX=clang++ cmake -S . -B build
 ```
 
-That sets the environment variables in bash for CC and CXX, and CMake will respect those variables.
+That sets the environment variables in bash for [`CC`][] and [`CXX`][], and CMake will respect those variables.
 This sets it just for that one line, but that's the only time you'll need those; afterwards CMake
 continues to use the paths it deduces from those values.
 
@@ -120,7 +120,7 @@ cmake --help
 And you can pick a tool with `-G"My Tool"` (quotes only needed if spaces are in the tool name). You
 should pick a tool on your first CMake call in a directory, just like the compiler. Feel free to
 have several build directories, like `build` and `buildXcode`.  You can set the environment variable
-`CMAKE_GENERATOR` to control the default generator (CMake 3.15+).  Note that makefiles will only run
+[`CMAKE_GENERATOR`][] to control the default generator (CMake 3.15+).  Note that makefiles will only run
 in parallel if you explicitly pass a number of threads, such as `make -j2`, while Ninja will
 automatically run in parallel. You can directly pass a parallelization option such as `-j 2` to the
 `cmake --build .` command in recent versions of CMake.
@@ -171,7 +171,7 @@ These are common CMake options to most packages:
 > In the CLI11 repository you cloned:
 >
 > * Check to see what options are available
-> * Change a value; maybe set `CMAKE_CXX_STANDARD` to 14 or turn off testing.
+> * Change a value; maybe set [`CMAKE_CXX_STANDARD`][] to 14 or turn off testing.
 > * Configure with `CMAKE_INSTALL_PREFIX=install`, then install it into that local directory. Make
 >   sure it shows up there!
 >
@@ -213,3 +213,5 @@ useful!
 [Modern CMake intro/running]: https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html]
 
 {% include links.md %}
+
+{% include cmake_links.md %}

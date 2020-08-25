@@ -47,6 +47,12 @@ cmake_print_properties(
 )
 ```
 
+> ## Warning
+>
+> You can't acually access [`SOURCES`][], since it conflictes with the `SOURCES` keyword in the
+> function.
+{:.callout}
+
 
 ### Tracing a run
 
@@ -125,8 +131,8 @@ Keep running continue (`c`). Do you see the problem?
 >
 > If it is found, this saves the location of the m library in a variable that we gave it the name
 > of, in our case, `MATH_LIBRARY`. We can add the path (not a target) using the same
-> `target_link_libraries` command. It is very unfortunate that this command happens to accept both
-> targets and raw paths and linker flags, but it's a historical leftover.
+> [`target_link_libraries`][] command. It is very unfortunate that this command happens to accept
+> both targets and raw paths and linker flags, but it's a historical leftover.
 >
 > ~~~cmake
 > # If there is a -lm, let's use it
@@ -139,24 +145,25 @@ Keep running continue (`c`). Do you see the problem?
 
 Note that CMake defaults to an "empty" build type, which is neither optimized nor debug. You can
 [fix this manually](https://cliutils.gitlab.io/modern-cmake/chapters/features.html), or always
-specify a build type. The empty build type uses the environment variables `CFLAGS` and `CXXFLAGS`,
-allowing CMake to integrate with Linux package managers. Otherwise, you can set the release and
-debug flags separately.
+specify a build type. The empty build type uses the environment variables [`CFLAGS`][] and
+[`CXXFLAGS`][], allowing CMake to integrate with Linux package managers. Otherwise, you can set the
+release and debug flags separately.
 
 # Common needs
 
 There are several common utilities that CMake can integrate with to help you with your builds. Here
 are just a few:
 
-* `CMAKE_CXX_COMPILER_LAUNCHER` can set up a compiler launcher, like `ccache`, to speed up your
+* [`CMAKE_CXX_COMPILER_LAUNCHER`][] can set up a compiler launcher, like `ccache`, to speed up your
   builds.
-* `CMAKE_CXX_CLANG_TIDY` can run clang-tidy to help you clean up your code.
-* `CMAKE_CXX_CPPCHECK` for cppcheck.
-* `CMAKE_CXX_CPPLINT` for cpplint.
-* `CMAKE_CXX_INCLUDE_WHAT_YOU_USE` for iwyu.
+* [`CMAKE_CXX_CLANG_TIDY`][] can run clang-tidy to help you clean up your code.
+* [`CMAKE_CXX_CPPCHECK`][] for cppcheck.
+* [`CMAKE_CXX_CPPLINT`][] for cpplint.
+* [`CMAKE_CXX_INCLUDE_WHAT_YOU_USE`][] for iwyu.
 
 You can set these when building if you want.
 
 [`code/04-debug`]: {{ site.baseurl }}/code/04-debug
 
 {% include links.md %}
+{% include cmake_links.md %}
