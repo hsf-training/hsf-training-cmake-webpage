@@ -56,7 +56,7 @@ their default settings and cache them into a file called `CMakeCache.txt`, which
 build directory. You can call the build directory anything you want; by convention it should have
 the word `build` in it to be ignored by most package's `.gitignore` files.
 
-You can then invoke your build system (line 2). Regardless of wether you used `make` (the default),
+You can then invoke your build system (line 2). Regardless of whether you used `make` (the default),
 `ninja`, or even an IDE-based system, you can build with a uniform command. You can add `-j 2` to
 build on two cores, or `-v` to verbosely show commands used to build.
 
@@ -171,7 +171,9 @@ These are common CMake options to most packages:
 > In the CLI11 repository you cloned:
 >
 > * Check to see what options are available
-> * Change a value; maybe set `CLI11_CXX_STD` to 14 or turn off testing.
+> * Change a value; maybe set `CMAKE_CXX_STANDARD` to 14 or turn off testing.
+> * Configure with `CMAKE_INSTALL_PREFIX=install`, then install it into that local directory. Make
+>   sure it shows up there!
 >
 {:.challenge}
 
