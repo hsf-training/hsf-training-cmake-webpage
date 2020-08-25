@@ -55,17 +55,23 @@ Have you wanted to watch exactly what happens in your CMake file, and when? The
 echoed to the screen when it is run, letting you follow exactly what is happening. There are related
 options as well, but they tend to bury you in output.
 
-> ## Watching a build
->
-> Let's try this out. Let's go to the code/04-debug folder and configure with trace mode on:
->
-> ```bash
-> cmake -S . -B build --trace-source=CMakeLists.txt
-> ```
->
-> Try adding `--trace-expand` too. What is the difference? How about replacing
-> `--trace-source=CMakeLists.txt` with `--trace`?
-{.:challenge}
+<div class="challenge"><h2>Watching a build</h2>
+{%- capture tmp -%}
+Let's try this out. Let's go to the [`code/04-debug`]() folder and configure with trace mode on:
+
+```bash
+cmake -S . -B build --trace-source=CMakeLists.txt
+```
+
+Try adding `--trace-expand` too. What is the difference? How about replacing
+`--trace-source=CMakeLists.txt` with `--trace`?
+{%- endcapture %}
+{{ tmp | markdownify }}
+<details><summary>C++ code (click to expand)</summary>
+{% include hl_code.html lang="cmake" file="code/04-debug/simple_lib.c" %}
+</details>
+</div>
+
 
 # C++ debugging
 
@@ -80,7 +86,7 @@ optimized release build, or `MinSizeRel` for a minimum size release (which I've 
 > out in a debugger.
 >
 > ```bash
-> cmake -S . -B build-debug
+> cmake -S . -B build-debug -DCMAKE_BUILD_TYPE=Debug
 > cmake --build build-debug
 > gdb build-debug/simple_example
 > ```
@@ -149,5 +155,7 @@ are just a few:
 * `CMAKE_CXX_INCLUDE_WHAT_YOU_USE` for iwyu.
 
 You can set these when building if you want.
+
+[`code/04-debug`]: {{ site.baseurl }}/code/04-debug
 
 {% include links.md %}

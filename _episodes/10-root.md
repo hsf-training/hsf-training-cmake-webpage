@@ -31,7 +31,9 @@ cmake --build .
 root -b -q -x ../CheckLoad.C
 ```
 
+<div>
 {% include hl_code.html lang="cmake" file="code/05a-root/CMakeLists.txt" %}
+</div>
 
 
 
@@ -41,4 +43,6 @@ Change to the `code/05b-root` directory. Run the same command above.
 
 {% include hl_code.html lang="cmake" file="code/05b-root/CMakeLists.txt" %}
 
+<div>
 {% include links.md %}
+</div>
