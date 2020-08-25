@@ -1,7 +1,1 @@
-/* simple.c or simple.cpp */
-#include <stdio.h>
-
-int main() {
-    printf("Hello, World!\n");
-    return 0;
-}
+../../_includes/code/00-intro/simple.c

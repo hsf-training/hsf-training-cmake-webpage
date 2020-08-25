@@ -55,23 +55,17 @@ Have you wanted to watch exactly what happens in your CMake file, and when? The
 echoed to the screen when it is run, letting you follow exactly what is happening. There are related
 options as well, but they tend to bury you in output.
 
-<div class="challenge"><h2>Watching a build</h2>
-{%- capture tmp -%}
-Let's try this out. Let's go to the [`code/04-debug`]() folder and configure with trace mode on:
-
-```bash
-cmake -S . -B build --trace-source=CMakeLists.txt
-```
-
-Try adding `--trace-expand` too. What is the difference? How about replacing
-`--trace-source=CMakeLists.txt` with `--trace`?
-{%- endcapture %}
-{{ tmp | markdownify }}
-<details><summary>C++ code (click to expand)</summary>
-{% include hl_code.html lang="cmake" file="code/04-debug/simple_lib.c" %}
-</details>
-</div>
-
+> ## Watching a build
+> Let's try this out. Let's go to the [`code/04-debug`]() folder and configure with trace mode on:
+>
+> ```bash
+> cmake -S . -B build --trace-source=CMakeLists.txt
+> ```
+>
+> Try adding `--trace-expand` too. What is the difference? How about replacing
+> `--trace-source=CMakeLists.txt` with `--trace`?
+>
+{:.challenge}
 
 # C++ debugging
 
@@ -80,36 +74,43 @@ To run a C++ debugger, you need to set several flags in your build. CMake does t
 `RelWithDebInfo` for a release build with some extra debug info. You can also use `Release` for an
 optimized release build, or `MinSizeRel` for a minimum size release (which I've never used).
 
-> ## Debug example
->
-> Let's try it. Go to `code/04-debug`, and build in debug mode. Our program has a bug. Let's try it
-> out in a debugger.
->
-> ```bash
-> cmake -S . -B build-debug -DCMAKE_BUILD_TYPE=Debug
-> cmake --build build-debug
-> gdb build-debug/simple_example
-> ```
->
-> Now, since we think there's a problem in `my_sin`, let's set a breakpoint in `my_sin`. Note that
-> I'm providing the gdb commands on the left, and lldb commands on the right.
->
-> ```
-> # GDB                # LLDB
-> break my_sin         breakpoint set --name my_sin
-> r                    r
-> ```
->
-> Now, let's watch what happens to the sign variable. Set a watchpoint:
->
-> ```
-> # GDB                # LLDB
-> watch sign           watchpoint set variable sign
-> c                    c
-> ```
->
-> Keep running continue (`c`). Do you see the problem?
-{:.challenge}
+<div class="challenge"><h2>Debug example</h2>
+
+<details><summary>C++ code (click to expand)</summary>
+{% include hl_code.html lang="cmake" file="code/04-debug/simple_lib.c" %}
+</details>
+
+{% capture tmp %}
+Let's try it. Go to `code/04-debug`, and build in debug mode. Our program has a bug. Let's try it
+out in a debugger.
+
+```bash
+cmake -S . -B build-debug -DCMAKE_BUILD_TYPE=Debug
+cmake --build build-debug
+gdb build-debug/simple_example
+```
+
+Now, since we think there's a problem in `my_sin`, let's set a breakpoint in `my_sin`. Note that
+I'm providing the gdb commands on the left, and lldb commands on the right.
+
+```
+# GDB                # LLDB
+break my_sin         breakpoint set --name my_sin
+r                    r
+```
+
+Now, let's watch what happens to the sign variable. Set a watchpoint:
+
+```
+# GDB                # LLDB
+watch sign           watchpoint set variable sign
+c                    c
+```
+
+Keep running continue (`c`). Do you see the problem?
+{% endcapture %}
+{{ tmp | markdownify }}
+</div>
 
 > ## Aside: Linking to math
 >

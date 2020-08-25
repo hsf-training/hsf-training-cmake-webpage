@@ -9,7 +9,7 @@ objectives:
 - Know how to set up a project
 - Know how to make at least one target
 keypoints:
-- The cmake_minimum_version setting has deep implications
+- The `cmake_minimum_version` setting has deep implications
 - You need a project line.
 - You should prepare one or more targets to do anything interesting.
 ---
@@ -19,15 +19,7 @@ keypoints:
 
 The following file is fine for the following examples:
 
-```c
-/* simple.c or simple.cpp */
-#include <stdio.h>
-
-int main() {
-    printf("Hello, World!");
-    return 0;
-}
-```
+{% include hl_code.html file="code/00-intro/simple.c" lang="c" %}
 
 This file can be compiled with C or C++.
 

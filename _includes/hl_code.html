@@ -1,5 +1,6 @@
 {% include gh_variables.html %}
 
+<div>
 <a href="{{ repo_url }}/blob/{{ default_branch }}/_includes/{{ include.file }}" class="no-underline">
 {% capture tmp %}
 ```{{ include.lang }}
@@ -8,3 +9,4 @@
 {% endcapture %}
 {{ tmp | markdownify }}
 </a>
+</div>
