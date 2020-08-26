@@ -147,7 +147,7 @@ Note that CMake defaults to an "empty" build type, which is neither optimized no
 [fix this manually](https://cliutils.gitlab.io/modern-cmake/chapters/features.html), or always
 specify a build type.
 
-Adopting a convention from Linux, all build types append compiler flags from the environment variables [`CFLAGS`][], [`CXXFLAGS`][], [`CUDAFLAGS`][], [`FCFLAGS`][] and [`LDFLAGS`][]. This feature is often used by package management software, in conjunction with the already mentioned [`CC`][], [`CXX`][], [`CUDACXX`][], [`FC`][] and [`CUDAHOSTCXX`][] environment variables. Otherwise, you can set the release and debug flags separately.
+Adopting a convention from Linux, all build types append compiler flags from the environment variables [`CFLAGS`][], [`CXXFLAGS`][], [`CUDAFLAGS`][], and [`LDFLAGS`][] ([full list](https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html#id4)). This feature is often used by package management software, in conjunction with the already mentioned [`CC`][], [`CXX`][], [`CUDACXX`][], and [`CUDAHOSTCXX`][] environment variables. Otherwise, you can set the release and debug flags separately.
 
 # Common needs
 
