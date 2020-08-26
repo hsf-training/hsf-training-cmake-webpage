@@ -126,7 +126,7 @@ Keep running continue (`c`). Do you see the problem?
 >
 > ~~~cmake
 > # Does -lm work? (notice this is find_library, not find_package)
->  > find_library(MATH_LIBRARY m)
+> find_library(MATH_LIBRARY m)
 > ~~~
 >
 > If it is found, this saves the location of the m library in a variable that we gave it the name
