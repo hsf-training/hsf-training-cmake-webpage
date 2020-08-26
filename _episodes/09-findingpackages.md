@@ -37,10 +37,10 @@ hide extra text, or `REQUIRED` to cause a missing package to fail the configure 
 > export HDF5_ROOT=$HOME/software/hdf5-1.12.0
 > ~~~
 >
-> Similarily, the variable [`CMAKE_PREFIX_PATH`][] can be used to hint a list of installation root paths at once:
+> Similarly, the variable [`CMAKE_PREFIX_PATH`](https://cmake.org/cmake/help/latest/envvar/CMAKE_PREFIX_PATH.html) can be used to hint a list of installation root paths at once:
 >
 > ~~~bash
-> export CMAKE_PREFIX_PATH=$HOME/software/hdf5-1.12.0:$HOME/software/boost-1.74.0
+> export CMAKE_PREFIX_PATH=$HOME/software/hdf5-1.12.0:$HOME/software/boost-1.74.0:$CMAKE_PREFIX_PATH
 > ~~~
 
 ## FindPackage
