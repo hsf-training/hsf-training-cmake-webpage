@@ -15,6 +15,9 @@ target_include_directories(simple_lib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_compile_definitions(simple_lib PUBLIC MYLIB_PUBLIC)
 target_compile_definitions(simple_lib PRIVATE MYLIB_PRIVATE)
 
+# Require a C++ feature (here: at least C++11)
+target_compile_features(simple_lib PUBLIC cxx_std_11)
+
 # Now add the executable
 add_executable(simple_example simple_example.cpp)
 
