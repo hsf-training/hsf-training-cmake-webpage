@@ -50,9 +50,9 @@ all CMake projects, which is almost everything.
 > ~~~
 {:.challenge}
 
-This will make a **build directory** (`-B`) if it does not exist, with the source directory defined
-as `-S`.  CMake will configure and generate makefiles by default, as well as set all options to
-their default settings and cache them into a file called `CMakeCache.txt`, which will sit in the
+This will make a **build directory** (`-B`) if it does not exist, with the **source directory**
+defined as `-S`.  CMake will configure and generate makefiles by default, as well as set all options
+to their default settings and cache them into a file called `CMakeCache.txt`, which will sit in the
 build directory. You can call the build directory anything you want; by convention it should have
 the word `build` in it to be ignored by most package's `.gitignore` files.
 
@@ -104,9 +104,9 @@ se, but you might not be familiar with it. To pick Clang:
 CC=clang CXX=clang++ cmake -S . -B build
 ```
 
-That sets the environment variables in bash for [`CC`][] and [`CXX`][], and CMake will respect those variables.
-This sets it just for that one line, but that's the only time you'll need those; afterwards CMake
-continues to use the paths it deduces from those values.
+That sets the environment variables in bash for [`CC`][] and [`CXX`][], and CMake will respect those
+variables.  This sets it just for that one line, but that's the only time you'll need those;
+afterwards CMake continues to use the paths it deduces from those values.
 
 ## Picking a generator
 
@@ -120,8 +120,8 @@ cmake --help
 And you can pick a tool with `-G"My Tool"` (quotes only needed if spaces are in the tool name). You
 should pick a tool on your first CMake call in a directory, just like the compiler. Feel free to
 have several build directories, like `build` and `buildXcode`.  You can set the environment variable
-[`CMAKE_GENERATOR`][] to control the default generator (CMake 3.15+).  Note that makefiles will only run
-in parallel if you explicitly pass a number of threads, such as `make -j2`, while Ninja will
+[`CMAKE_GENERATOR`][] to control the default generator (CMake 3.15+).  Note that makefiles will only
+run in parallel if you explicitly pass a number of threads, such as `make -j2`, while Ninja will
 automatically run in parallel. You can directly pass a parallelization option such as `-j 2` to the
 `cmake --build .` command in recent versions of CMake.
 
@@ -158,12 +158,12 @@ When CMake looks for a cached variable, it will use the existing value and will 
 
 These are common CMake options to most packages:
 
-* `-DCMAKE_BUILD_TYPE=` Pick from `Release`, `RelWithDebInfo`, `Debug`, or sometimes more.
-* `-DCMAKE_INSTALL_PREFIX=` The location to install to. System install on UNIX would often be
+* [`CMAKE_BUILD_TYPE`][]: Pick from `Release`, `RelWithDebInfo`, `Debug`, or sometimes more.
+* [`CMAKE_INSTALL_PREFIX`][]: The location to install to. System install on UNIX would often be
   `/usr/local` (the default), user directories are often `~/.local`, or you can pick a folder.
-* `-DBUILD_SHARED_LIBS=` You can set this `ON` or `OFF` to control the default for shared libraries
+* [`BUILD_SHARED_LIBS`][]: You can set this `ON` or `OFF` to control the default for shared libraries
   (the author can pick one vs. the other explicitly instead of using the default, though)
-* `-DBUILD_TESTING=` This is a common name for enabling tests, not all packages use it, though,
+* [`BUILD_TESTING`][`CTest`]: This is a common name for enabling tests, not all packages use it, though,
   sometimes with good reason.
 
 > ## Try it out
