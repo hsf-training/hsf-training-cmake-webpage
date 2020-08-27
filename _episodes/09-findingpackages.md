@@ -28,6 +28,21 @@ including `MyPackage_DIR` if that variable exists. You can only perform one of t
 You can add `COMPONENTS` in some cases, if the package supports it, and you can also add `QUIET` to
 hide extra text, or `REQUIRED` to cause a missing package to fail the configure step.
 
+> ## Aside: Environment Hints
+>
+> Hinting the installation of software package that is installed outside of a system paths works can also be done with environment variables.
+> In CMake 3.12+, individual packages locations can be hinted by setting their installation root path in [`<PackageName>_ROOT`][].
+>
+> ~~~bash
+> export HDF5_ROOT=$HOME/software/hdf5-1.12.0
+> ~~~
+>
+> Similarly, the variable [`CMAKE_PREFIX_PATH`](https://cmake.org/cmake/help/latest/envvar/CMAKE_PREFIX_PATH.html) can be used to hint a list of installation root paths at once:
+>
+> ~~~bash
+> export CMAKE_PREFIX_PATH=$HOME/software/hdf5-1.12.0:$HOME/software/boost-1.74.0:$CMAKE_PREFIX_PATH
+> ~~~
+
 ## FindPackage
 
 The older method for finding packages is the FindPackage.cmake method (`MODULE`). This is a CMake or
