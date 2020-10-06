@@ -29,7 +29,7 @@ You've already seen a target:
 add_executable(myexample simple.cpp)
 ```
 
-This creates an "executable" target with the name `mytarget`. Target names must be unique (and there
+This creates an "executable" target with the name `myexample`. Target names must be unique (and there
 is a way to set the executable name to something other than the target name if you really want to).
 
 Targets are much like "objects" in other languages; they have properties (member variables) that
