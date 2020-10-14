@@ -110,7 +110,7 @@ but there is no INTERFACE version - you cannot force a [`CXX_STANDARD`][] via a 
 do if you had a C++11 interface target and a C++14 interface target and linked to both?
 
 By the way, there _is_ a way to handle this - you can specify the minimum compile features you need
-to compile a target; the `std_cxx_11` and similar meta-features are perfect for this - your target
+to compile a target; the `cxx_std_11` and similar meta-features are perfect for this - your target
 will compile with at least the highest level specified, unless [`CXX_STANDARD`][] is set (and that's
 a nice, clear error if you set [`CXX_STANDARD`][] too low). [`target_compile_features`][] can fill
 [`COMPILE_FEATURES`][] and [`INTERFACE_COMPILE_FEATURES`][], just like directories in example 1.
