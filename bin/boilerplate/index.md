@@ -14,4 +14,6 @@ FIXME: home page introduction
 > FIXME
 {: .prereq}
 
+{% include curriculum.html %}
+
 {% include links.md %}
