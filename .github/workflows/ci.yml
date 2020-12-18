@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: jwlawson/actions-setup-cmake@v1.3
+    - uses: jwlawson/actions-setup-cmake@v1.4
       with:
         cmake-version: 3.14.6
 
