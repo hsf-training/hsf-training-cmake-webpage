@@ -343,3 +343,27 @@ kbd {
     white-space: nowrap;
     font-style: normal;
 }
+
+// -----------
+// Author table
+// -----------
+
+.author-table> table> tbody > tr:nth-child(odd) > td,
+.author-table> table> tbody > tr:nth-child(even) > td {
+ background-color: white;
+}
+.author-table {
+    width: inherit;
+}
+.author-table > table > tbody > tr > td {
+    border: none;
+}
+.author-table> table > tbody > tr > td > a > br{
+    display: none;
+}
+.author-table> table > tbody > tr > td > a > img{
+    margin-bottom: 10px;
+}
+.author-table> table > tbody > tr > td > a > sub{
+    font-size: 100%;
+}

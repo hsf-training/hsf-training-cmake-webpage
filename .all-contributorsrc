@@ -1,0 +1,14 @@
+{
+  "files": [
+    "README.md",
+    "_includes/authors.html"
+  ],
+  "projectName": "test-module",
+  "projectOwner": "hsf-training",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributors": [
+  ],
+  "contributorsPerLine": 7
+}

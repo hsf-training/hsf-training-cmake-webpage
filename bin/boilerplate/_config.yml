@@ -100,3 +100,6 @@ exclude:
 
 # Turn on built-in syntax highlighting.
 highlighter: rouge
+
+# show authors managed by allcontributors bot
+show_authors: false
