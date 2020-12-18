@@ -5,16 +5,16 @@ on:
   pull_request: []
 jobs:
   build-website:
-    if: github.repository != 'carpentries/styles' && (github.repository_owner == 'swcarpentry' || github.repository_owner == 'datacarpentry' || github.repository_owner == 'librarycarpentry' || github.repository_owner == 'carpentries')
+    if: ${{ !endsWith(github.repository, '/hsf-styles') }}
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
     steps:
       - name: Set up Ruby
-        uses: actions/setup-ruby@main
+        uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.7.1'
+          ruby-version: '2.7'
 
       - name: Set up Python
         uses: actions/setup-python@v2
