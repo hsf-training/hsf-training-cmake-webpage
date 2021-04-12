@@ -73,6 +73,18 @@ options as well, but they tend to bury you in output.
 >
 {:.challenge}
 
+
+### Find call information
+
+CMake scripts can search for dependent libraries, executables and more.
+More details on this will be shown in the next section.
+
+For now, let's watch where CMake searches for `find_...` locations in our current example!
+You can print extra find call information during the cmake run to standard error by adding `--debug-find`.
+
+Alternatively, CMake 3.17+ variable [CMAKE_FIND_DEBUG_MODE](https://cmake.org/cmake/help/latest/variable/CMAKE_FIND_DEBUG_MODE.html) can be set around sections of your `CMakeLists.txt` to limit debug printing to a specific region.
+
+
 # C++ debugging
 
 To run a C++ debugger, you need to set several flags in your build. CMake does this for you with
