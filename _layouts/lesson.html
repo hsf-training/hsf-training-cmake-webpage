@@ -6,3 +6,8 @@ layout: base
   {{ content }}
 </article>
 {% include syllabus.html %}
+{% if site.show_authors %}
+<article>
+{% include authors.html %}
+</article>
+{% endif %}

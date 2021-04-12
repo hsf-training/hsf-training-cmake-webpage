@@ -67,7 +67,10 @@ KNOWN_BLOCKQUOTES = {
     'prereq',
     'quotation',
     'solution',
-    'testimonial'
+    'testimonial',
+    'warning',
+    'caution',
+    'error',
 }
 
 # What kinds of code fragments are allowed?
@@ -89,6 +92,7 @@ KNOWN_CODEBLOCKS = {
     'language-shell',
     'language-sql',
     'language-yaml',
+    'warning',
 }
 
 # What fields are required in teaching episode metadata?

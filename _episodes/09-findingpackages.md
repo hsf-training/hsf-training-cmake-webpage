@@ -42,6 +42,7 @@ hide extra text, or `REQUIRED` to cause a missing package to fail the configure 
 > ~~~bash
 > export CMAKE_PREFIX_PATH=$HOME/software/hdf5-1.12.0:$HOME/software/boost-1.74.0:$CMAKE_PREFIX_PATH
 > ~~~
+{: .callout}
 
 ## FindPackage
 
