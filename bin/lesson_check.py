@@ -68,7 +68,9 @@ KNOWN_BLOCKQUOTES = {
     'quotation',
     'solution',
     'testimonial',
-    'warning'
+    'warning',
+    'caution',
+    'error',
 }
 
 # What kinds of code fragments are allowed?
