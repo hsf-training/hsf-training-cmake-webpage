@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
-    - uses: pre-commit/action@v2.0.0
+    - uses: pre-commit/action@v2.0.2
 
   test:
     name: Test
@@ -21,9 +21,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: jwlawson/actions-setup-cmake@v1.4
+    - uses: jwlawson/actions-setup-cmake@v1.8
       with:
         cmake-version: 3.14.6
+
+    - name: Install boost
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libboost-dev
 
     - name: 00-intro
       run: |
@@ -41,7 +46,7 @@ jobs:
 
     - name: 03-structure
       run: |
-        cmake -S code/03-structure -B build-03-structure -DBOOST_ROOT=$BOOST_ROOT_1_72_0
+        cmake -S code/03-structure -B build-03-structure
         cmake --build build-03-structure
         ./build-03-structure/apps/app
         ./build-03-structure/tests/testlib
