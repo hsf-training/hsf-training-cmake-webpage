@@ -97,7 +97,7 @@ fields at the same time.
 
 ## Example 1: Include directories
 
-When you run [`target_include_directory(TargetA PRIVATE mydir)`][`target_include_directory`], then
+When you run [`target_include_directories(TargetA PRIVATE mydir)`][`target_include_directories`], then
 the [`INCLUDE_DIRECTORIES`][] property of `TargetA` has `mydir` appended. If you use the keyword
 `INTERFACE` instead, then [`INTERFACE_INCLUDE_DIRECTORIES`][] is appended to, instead. If you use
 `PUBLIC`, then both properties are appended to at the same time.
