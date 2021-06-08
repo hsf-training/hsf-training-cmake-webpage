@@ -210,7 +210,7 @@ useful!
 > * Based on [Modern CMake intro/running][]
 {:.checklist}
 
-[Modern CMake intro/running]: https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html]
+[Modern CMake intro/running]: https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html
 
 {% include links.md %}
 
