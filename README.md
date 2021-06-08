@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/hsf-training/hsf-training-cmake-webpage.svg?branch=gh-pages)](https://travis-ci.org/hsf-training/hsf-training-cmake-webpage)
 [![Test Status](https://github.com/hsf-training/hsf-training-cmake-webpage/workflows/CI/badge.svg)](https://github.com/hsf-training/hsf-training-cmake-webpage/actions)
 
 # Introduction to More Modern CMake
