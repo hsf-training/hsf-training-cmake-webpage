@@ -42,20 +42,7 @@ in the
 [`cmake_parse_arguments`](https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html)
 command. Here's how it works:
 
-```cmake
-function(COMPLEX required_arg_1)
-    cmake_parse_arguments(
-        PARSE_ARGV
-        1
-        COMPLEX_PREFIX
-        "SINGLE;ANOTHER"
-        "ONE_VALUE;ALSO_ONE_VALUE"
-        "MULTI_VALUES"
-    )
-endfunction()
-
-complex(SINGLE ONE_VALUE value MULTI_VALUES some other values)
-```
+{% include hl_code.html lang="cmake" file="code/06-functions/complex.cmake" %}
 
 Note: if you use a macro, then a scope is not created and the signature above will not work - remove
 the `PARSE_ARGV` keyword and the number of required arguments from the beginning, and add "${ARGN}")
@@ -72,12 +59,16 @@ in the arguments.
 Inside the function, you'll find:
 
 ```cmake
-COMPLEX_PREFIX_SINGLE = TRUE
-COMPLEX_PREFIX_ANOTHER = FALSE
-COMPLEX_PREFIX_ONE_VALUE = "value"
-COMPLEX_PREFIX_ALSO_ONE_VALUE = <UNDEFINED>
-COMPLEX_PREFIX_MULTI_VALUES = "some;other;values"
-COMPLEX_PREFIX_UNPARSED_ARGUMENTS = <UNDEFINED>
+-- ARGV=something;SINGLE;ONE_VALUE;value;MULTI_VALUES;some;other;values;ANOTHER_MULTI_VALUES;even;more;values
+-- ARGN=SINGLE;ONE_VALUE;value;MULTI_VALUES;some;other;values;ANOTHER_MULTI_VALUES;even;more;values
+-- required_arg_1=something
+-- COMPLEX_PREFIX_SINGLE=TRUE
+-- COMPLEX_PREFIX_ANOTHER=FALSE
+-- COMPLEX_PREFIX_ONE_VALUE=value
+-- COMPLEX_PREFIX_ALSO_ONE_VALUE=
+-- COMPLEX_PREFIX_MULTI_VALUES=some;other;values
+-- COMPLEX_PREFIX_ANOTHER_MULTI_VALUES=even;more;values
+-- COMPLEX_PREFIX_UNPARSED_ARGUMENTS=
 ```
 
 The semicolons here are an explicit CMake list; you can use other methods to make this simpler at
