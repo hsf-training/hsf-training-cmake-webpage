@@ -125,7 +125,7 @@ watch sign           watchpoint set variable sign
 c                    c
 ```
 
-Keep running continue (`c`). Do you see the problem?
+Keep running continue (`c`). Do you find the problem in the code?
 {% endcapture %}
 {{ tmp | markdownify }}
 </div>
