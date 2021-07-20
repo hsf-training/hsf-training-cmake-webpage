@@ -1,6 +1,6 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v3.2.0
+  rev: v4.0.1
   hooks:
   - id: check-added-large-files
   - id: check-case-conflict
@@ -14,7 +14,7 @@ repos:
     files: ^(_episodes|code|README.md|setup.md)
 
 - repo: https://github.com/cheshirekow/cmake-format-precommit
-  rev: v0.6.11
+  rev: v0.6.13
   hooks:
   - id: cmake-format
     additional_dependencies: [pyyaml]
