@@ -175,7 +175,7 @@ imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries 
 rename some other library, are also allowed to have `::`). Most of the time you will get imported
 libraries from other places, and will not be making your own.
 
-> ## INTERFACE IMPORETED
+> ## INTERFACE IMPORTED
 >
 > What about [`INTERFACE IMPORTED`](https://cmake.org/cmake/help/latest/command/add_library.html#id6)?
 > The difference comes down to two things:
