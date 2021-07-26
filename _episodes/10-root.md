@@ -10,6 +10,8 @@ keypoints:
 - ROOT has a CONFIG package you can use to integrate with CMake.
 ---
 
+[ROOT](https://root.cern/) is a data analysis framework.
+
 Let's try a couple of ROOT examples; one with the classic variable/global configure and one with the
 newer target method. You will need a ROOT install or a ROOT docker container to run these examples.
 You can use `rootproject/root:latest` to test this, which is an official

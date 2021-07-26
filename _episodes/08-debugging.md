@@ -80,9 +80,9 @@ CMake scripts can search for dependent libraries, executables and more.
 More details on this will be shown in the next section.
 
 For now, let's watch where CMake searches for `find_...` locations in our current example!
-You can print extra find call information during the cmake run to standard error by adding `--debug-find`.
+You can print extra find call information during the cmake run to standard error by adding `--debug-find` (CMake 3.17+).
 
-Alternatively, CMake 3.17+ variable [CMAKE_FIND_DEBUG_MODE](https://cmake.org/cmake/help/latest/variable/CMAKE_FIND_DEBUG_MODE.html) can be set around sections of your `CMakeLists.txt` to limit debug printing to a specific region.
+Alternatively, [CMAKE_FIND_DEBUG_MODE](https://cmake.org/cmake/help/latest/variable/CMAKE_FIND_DEBUG_MODE.html) can be set around sections of your `CMakeLists.txt` to limit debug printing to a specific region.
 
 
 # C++ debugging
@@ -125,7 +125,7 @@ watch sign           watchpoint set variable sign
 c                    c
 ```
 
-Keep running continue (`c`). Do you see the problem?
+Keep running continue (`c`). Do you find the problem in the code?
 {% endcapture %}
 {{ tmp | markdownify }}
 </div>
