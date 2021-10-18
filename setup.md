@@ -14,14 +14,14 @@ your system.
 On your computer, you need to have:
 
 * `git`
-* `cmake` (Version 3.14 or newer). See the [instructions here][CMake Instructions].
+* `cmake` (Version 3.15 or newer). See the [instructions here][CMake Instructions].
 * A C++ compiler - system default is fine.
 * `make` or `ninja` (unless you are using Xcode/MSVC)
 
 ## [Docker][] based setup
 
 [Docker][] is a powerful tool that allows you
-to perform a virtualisation of your environment but completely in software.  It
+to perform a virtualization of your environment but completely in software.  It
 allows you to bundle up the installation of tools for use by others in a uniform way
 without changing your underlying system, and works on all major OS's (latest Windows 10 Update
 _highly_ recommended, and required if you have Windows 10 Home).

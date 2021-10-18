@@ -1,5 +1,5 @@
 # This is required in all CMakeLists Selecting a nice minimum version and range
-cmake_minimum_required(VERSION 3.14...3.18)
+cmake_minimum_required(VERSION 3.15...3.21)
 
 # We can call the project anything we want Listing the language(s) avoids the C
 # + CXX default

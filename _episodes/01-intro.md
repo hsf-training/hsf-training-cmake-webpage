@@ -22,7 +22,7 @@ to be built to build file B), and ways to store the commands used to build each 
 file. These are language independent (mostly), allowing you to setup builds of almost anything; you
 can use `make` to build LaTeX documents if you wish. Some common build systems include make (the
 classic pervasive one), ninja (a newer one from Google designed in the age of build system
-generators), and rake (Ruby make, nice syntax for Ruby users).
+generators), invoke (a Python one), and rake (Ruby make, nice syntax for Ruby users).
 
 However, this is:
 
@@ -35,9 +35,14 @@ Enter **Build System Generators** (hereby labeled BSGs for brevity). These under
 of your programming language build; they usually support common compilers, languages, libraries, and
 output formats. These usually write a build system (or IDE) file and then let that do the actually
 build. The most popular BSG is CMake, which stands for Cross-platform Make. But as we've just shown,
-it is not really in the same category as make. Other BSGs include Bazel (by Google), SCons (older
-Python system), Meson (very young Python system), and a few others. But CMake has unparalleled
-support by IDEs, libraries, and compilers.
+it is not really in the same category as make. Other BSGs include Autotools (old, inflexible), Bazel
+(by Google), SCons (older Python system), Meson (young Python system, very opinionated), and a few
+others. But CMake has unparalleled support by IDEs, libraries, and compilers.  It also scales very
+well, with small projects able to pick it up easily (modern CMake, anyway), and massive projects
+ like the CERN experiments being about to use it for thousands of modules.
+
+<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2674_RC03/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"/m/0cxh7f","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/g/11cmy51gz6","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/g/11bzyq50jp","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/m/0170rr","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/m/04dl04","geo":"US","time":"2004-01-01 2021-10-18"}],"category":0,"property":""}, {"exploreQuery":"date=all&geo=US&q=%2Fm%2F0cxh7f,%2Fg%2F11cmy51gz6,%2Fg%2F11bzyq50jp,%2Fm%2F0170rr,%2Fm%2F04dl04","guestPath":"https://trends.google.com:443/trends/embed/"}); </script>
+
 
 Note that both CMake and Make are custom languages rather than being built in an existing language,
 like rake and SCons, etc. While it is nice to consolidate languages, the requirement that you have
@@ -85,12 +90,46 @@ up).
 > **Bad 2.8 style CMake**: Adding a C++11 flag manually. This is compiler specific, is different for
 > CUDA, and locks in a set version, rather than a minimum version.
 >
-> **If you require CMake 3.1+**, you can set `CXX_STANDARD`, but only on a final target.
+> **If you require CMake 3.1+**, you can set `CXX_STANDARD`, but only on a final target. Or you can
+> manually list `compile_features` for individual C++11 and C++14 features, and, and all targets using
+> yours will get at least that level set on them.
+> **If you require CMake 3.8+**, you can just use `compile_features` to set a _minimium_ standard level,
+> like `cxx_std_11`, instead of manually listing a bunch of features. THis was used for C++17 and later
+> C++20 and C__23, exclusively.
 >
-> **If you require CMake 3.8+**, you can just use `compile_features` to set a _minimium_ feature
-> level you require, and all targets using yours will get at least that level set on them!
 {: .callout}
 
+
+## Selecting a minimum in 2021:
+
+What minimum CMake should you _run_ locally, and what minimum should you _support_ for people using your
+code? Since you are reading this, you should be able to get a release in the last few versions of CMake;
+do that, it will make your development easier. For support, there are two ways to pick minimums: based on
+features added (which is what a developer cares about), or on common pre-installed CMakes (which is what a
+user cares about).
+
+Never select a minimum version older than the oldest compiler version you support. CMake should always be
+at least as new as your compiler.
+
+### What minimum to choose - OS support:
+
+* 3.4: The bare minimum. Never set less.
+* 3.7: Debian old-stable.
+* 3.10: Ubuntu 18.04.
+* 3.11: CentOS 8 (use EPEL or AppSteams, though)
+* 3.13: Debian stable.
+* 3.16: Ubuntu 20.04.
+* 3.19: First to support Apple Silicon.
+* latest: pip/conda-forge/homebew/chocolaty, etc.
+
+### What minimum to choose - Features:
+
+* 3.8: C++ meta features, CUDA, lots more
+* 3.11: `IMPORTED INTERFACE` setting, faster, FetchContent, `COMPILE_LANGUAGE` in IDEs
+* 3.12: C++20, `cmake --build build -j N`, `SHELL:`, FindPython
+* 3.14/3.15: CLI, FindPython updates
+* 3.16: Unity builds / precompiled headers, CUDA meta features
+* 3.17/3.18: Lots more CUDA, metaprogramming
 
 ## Other sources
 
