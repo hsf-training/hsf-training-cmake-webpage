@@ -62,7 +62,7 @@ build on two cores, or `-v` to verbosely show commands used to build.
 
 Finally, you can even run your tests from here, by passing the "test" target to the underlying build
 system. If you use CMake 3.15+, you can shorten `--target` to `-t`. There's also a new `cmake <dir>
---install` comand in 3.15 that does the install - without invoking the underlying build system!
+--install` command in 3.15 that does the install - without invoking the underlying build system!
 
 > ## Warning about in-source builds
 >
@@ -77,7 +77,7 @@ system. If you use CMake 3.15+, you can shorten `--target` to `-t`. There's also
 
 > ## Other syntax choices
 >
-> The classic, battle hardened method should be shown for completness:
+> The classic, battle hardened method should be shown for completeness:
 >
 > ~~~bash
 > mkdir build
@@ -90,7 +90,7 @@ system. If you use CMake 3.15+, you can shorten `--target` to `-t`. There's also
 > This has several downsides. If the directory already exists, you have to add `-p`, but that
 > doesn't work on Windows. You can't as easily change between build directories, because you are in
 > it. It's more lines, and if you forget to change to the build directory, and you use `cmake .`
-> instead of `cmake ..`, then you can polute your source directory.
+> instead of `cmake ..`, then you can pollute your source directory.
 {: .callout}
 
 

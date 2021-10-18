@@ -49,7 +49,7 @@ cmake_print_properties(
 
 > ## Warning
 >
-> You can't acually access [`SOURCES`][], since it conflictes with the `SOURCES` keyword in the
+> You can't actually access [`SOURCES`][], since it conflictes with the `SOURCES` keyword in the
 > function.
 {:.callout}
 
