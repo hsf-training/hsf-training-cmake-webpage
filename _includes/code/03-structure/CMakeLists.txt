@@ -1,5 +1,5 @@
-# Works with 3.14 and tested through 3.18
-cmake_minimum_required(VERSION 3.14...3.18)
+# Works with 3.15 and tested through 3.21
+cmake_minimum_required(VERSION 3.15...3.21)
 
 # Project name and a few useful settings. Other commands can pick up the results
 project(
@@ -44,11 +44,12 @@ include(FetchContent)
 find_package(Boost REQUIRED)
 # Adds Boost::boost / Boost::headers (newer FindBoost / BoostConfig 3.15 name)
 
-# Formatting library, adds fmt::fmt
+# Formatting library, adds fmt::fmt Always use the full git hash, not the tag,
+# safer and faster to recompile
 FetchContent_Declare(
   fmtlib
   GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-  GIT_TAG 7.0.2)
+  GIT_TAG 8.0.1)
 FetchContent_MakeAvailable(fmtlib)
 
 # The compiled library code is here

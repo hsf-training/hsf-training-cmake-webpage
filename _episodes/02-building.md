@@ -9,7 +9,6 @@ objectives:
 - Learn how to build an existing project.
 - Customize the build.
 - Learn how to do some basic debugging.
-
 keypoints:
 - Build a project.
 - Use out-of-source builds.
@@ -31,22 +30,16 @@ all CMake projects, which is almost everything.
 > Let's get a project and try to build it. For fun, let's build CLI11:
 >
 > ```bash
-> git clone --recursive https://github.com/CLIUtils/CLI11.git
+> git clone https://github.com/CLIUtils/CLI11.git
 > cd CLI11
 > ```
->
-> Note: the `--recursive` flag, which is spelled `--recurse-submodules` in newer versions of git
-> (the old spelling still works) just tells git to download any submodules too, if you haven't seen
-> that before. If you are short on space, use `--recurse-submodules=extern/googletest` to only get
-> the one submodule we care about. If you forget to add the flag, running `git submodule update
-> --init` will get all the submodules for you after you've cloned.
 >
 > Now, from the newly downloaded directory, let's try the modern CMake (3.14) build procedure:
 >
 > ~~~bash
 > cmake -S . -B build
 > cmake --build build
-> cmake --build build --target test
+> cmake --build build -t test
 > ~~~
 {:.challenge}
 
@@ -61,8 +54,8 @@ You can then invoke your build system (line 2). Regardless of whether you used `
 build on two cores, or `-v` to verbosely show commands used to build.
 
 Finally, you can even run your tests from here, by passing the "test" target to the underlying build
-system. If you use CMake 3.15+, you can shorten `--target` to `-t`. There's also a new `cmake <dir>
---install` command in 3.15 that does the install - without invoking the underlying build system!
+system. `-t` (`--target` before CMake 3.15) lets you select a target. There's also a `cmake <dir>
+--install` command in CMake 3.15+ that does the install - without invoking the underlying build system!
 
 > ## Warning about in-source builds
 >
@@ -119,11 +112,11 @@ cmake --help
 
 And you can pick a tool with `-G"My Tool"` (quotes only needed if spaces are in the tool name). You
 should pick a tool on your first CMake call in a directory, just like the compiler. Feel free to
-have several build directories, like `build` and `buildXcode`.  You can set the environment variable
+have several build directories, like `build` and `build-xcode`.  You can set the environment variable
 [`CMAKE_GENERATOR`][] to control the default generator (CMake 3.15+).  Note that makefiles will only
 run in parallel if you explicitly pass a number of threads, such as `make -j2`, while Ninja will
 automatically run in parallel. You can directly pass a parallelization option such as `-j 2` to the
-`cmake --build .` command in recent versions of CMake.
+`cmake --build .` command in recent versions of CMake as well.
 
 ## Setting options
 
@@ -171,7 +164,7 @@ These are common CMake options to most packages:
 > In the CLI11 repository you cloned:
 >
 > * Check to see what options are available
-> * Change a value; maybe set [`CMAKE_CXX_STANDARD`][] to 14 or turn off testing.
+> * Change a value; maybe set [`CMAKE_CXX_STANDARD`][] to `14` or turn off testing.
 > * Configure with `CMAKE_INSTALL_PREFIX=install`, then install it into that local directory. Make
 >   sure it shows up there!
 >

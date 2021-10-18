@@ -69,7 +69,7 @@ one**! Never use the raw variables past the lines immediately following the `fin
 There are several easy mistakes to make if you do not make imported targets, including forgetting to
 add `SYSTEM`, and the search order is better (especially before CMake 3.12).
 
-In this project, I use the new [`FetchContent`][] to download several dependencies; although
+In this project, I use the new [`FetchContent`][] (3.11/3.14) to download several dependencies; although
 normally I prefer git submodules in `/extern`.
 
 ### Source
