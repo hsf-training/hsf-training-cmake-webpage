@@ -18,3 +18,7 @@ repos:
   hooks:
   - id: cmake-format
     additional_dependencies: [pyyaml]
+
+ci:
+    autoupdate_schedule: monthly
+
