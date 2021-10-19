@@ -93,8 +93,9 @@ up).
 > **If you require CMake 3.1+**, you can set `CXX_STANDARD`, but only on a final target. Or you can
 > manually list `compile_features` for individual C++11 and C++14 features, and, and all targets using
 > yours will get at least that level set on them.
+>
 > **If you require CMake 3.8+**, you can just use `compile_features` to set a _minimium_ standard level,
-> like `cxx_std_11`, instead of manually listing a bunch of features. THis was used for C++17 and later
+> like `cxx_std_11`, instead of manually listing a bunch of features. This was used for C++17 and later
 > C++20 and C__23, exclusively.
 >
 {: .callout}
