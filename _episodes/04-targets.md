@@ -153,7 +153,7 @@ See more [commands here](https://cmake.org/cmake/help/latest/manual/cmake-comman
 
 ## Other types of targets
 
-You might be really exited by targets and are already planning out how you can describe your
+You might be really excited by targets and are already planning out how you can describe your
 programs in terms of targets. That's great! However, you'll quickly run into two more situations
 where the target language is useful, but you need some extra flexibility over what we've covered.
 
