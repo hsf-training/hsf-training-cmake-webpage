@@ -1,5 +1,5 @@
 [![Test Status](https://github.com/hsf-training/hsf-training-cmake-webpage/workflows/CI/badge.svg)](https://github.com/hsf-training/hsf-training-cmake-webpage/actions)
-
+[![HSF Training Center](https://img.shields.io/badge/HSF%20Training%20Center-browse-ff69b4)](https://hepsoftwarefoundation.org/training/curriculum.html)
 # Introduction to More Modern CMake
 
 This repository generates the corresponding lesson website from [The
