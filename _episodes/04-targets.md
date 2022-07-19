@@ -170,7 +170,7 @@ Notice you didn't need to add any source files. Now you can set `INTERFACE` prop
 
 The second situation is if you have a pre-built library that you want to use. This is called an
 imported library in CMake, and uses the keyword `IMPORTED`.  Imported libraries can also be
-`INTERFACE` libraries, they can built and modified using the same syntax as other libraries
+`INTERFACE` libraries, they can be built and modified using the same syntax as other libraries
 (starting in CMake 3.11), and they can have `::` in their name. (`ALIAS` libraries, which simply
 rename some other library, are also allowed to have `::`). Most of the time you will get imported
 libraries from other places, and will not be making your own.
