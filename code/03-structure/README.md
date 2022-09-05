@@ -41,4 +41,4 @@ cmake -S . -B xbuild -GXcode
 cmake --open xbuild
 ```
 
-The CMakeLists show off several useful design patters for CMake.
+The CMakeLists show off several useful design patterns for CMake.
