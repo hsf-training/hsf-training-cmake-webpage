@@ -14,8 +14,7 @@ keypoints:
 - Modern CMake is simpler and reduces the chance of build problems.
 ---
 
-Building code is hard. You need long commands to build each part of your code; and you need do to
-this on many parts of your code.
+Building code is hard. You need long commands to build each part of your code and you need do to this on many parts of your code.
 
 So people came up with **Build Systems**; these had ways set up dependencies (such as file A needs
 to be built to build file B), and ways to store the commands used to build each file or type of
@@ -26,7 +25,7 @@ generators), invoke (a Python one), and rake (Ruby make, nice syntax for Ruby us
 
 However, this is:
 
-* Mostly hand coded: You have to know all the proper commands
+* Mostly hand coded: You have to know all the proper commands.
 * Platform/compiler dependent: You have to build the commands for each compiler.
 * Not aware of dependencies: If you require a library, you have to handle the paths, etc.
 * Hard to extend; if you want to use an IDE instead, good luck.
@@ -106,8 +105,7 @@ up).
 What minimum CMake should you _run_ locally, and what minimum should you _support_ for people using your
 code? Since you are reading this, you should be able to get a release in the last few versions of CMake;
 do that, it will make your development easier. For support, there are two ways to pick minimums: based on
-features added (which is what a developer cares about), or on common pre-installed CMakes (which is what a
-user cares about).
+features added (which is what a developer cares about), or on common pre-installed CMakes (which is what a user cares about).
 
 Never select a minimum version older than the oldest compiler version you support. CMake should always be
 at least as new as your compiler.
