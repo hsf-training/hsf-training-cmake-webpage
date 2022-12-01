@@ -11,7 +11,7 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
     - uses: pre-commit/action@v2.0.3
 
@@ -19,7 +19,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - uses: jwlawson/actions-setup-cmake@v1.11
       with:
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     container: rootproject/root:latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Build 05a-root
       run: |
