@@ -101,7 +101,7 @@ up).
 {: .callout}
 
 
-## Selecting a minimum in 2021:
+## Selecting a minimum in 2023:
 
 What minimum CMake should you _run_ locally, and what minimum should you _support_ for people using your
 code? Since you are reading this, you should be able to get a release in the last few versions of CMake;
@@ -131,6 +131,10 @@ at least as new as your compiler.
 * 3.14/3.15: CLI, FindPython updates
 * 3.16: Unity builds / precompiled headers, CUDA meta features
 * 3.17/3.18: Lots more CUDA, metaprogramming
+* 3.20: C++23, CUDARCHS, IntelLLVM, NVHPC
+* 3.21: Different message types, MSVC 2022, C17 & C23, HIP, MSYS
+* 3.24: Package finder integration with downloads, `--fresh`
+* 3.25: C++26 support, LTO for CUDA
 
 ## Other sources
 
