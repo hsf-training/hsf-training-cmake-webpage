@@ -51,7 +51,7 @@ Let's look at the three lines:
 Those commands have a few extra arguments that you can give:
 
 ```cmake
-cmake_minimum_required(VERSION 3.15...3.21)
+cmake_minimum_required(VERSION 3.15...3.25)
 
 project(MyProject
   VERSION
