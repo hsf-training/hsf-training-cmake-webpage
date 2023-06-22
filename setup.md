@@ -51,7 +51,7 @@ git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
 cd hsf-training-cmake-webpage
 docker run -v $PWD:/cmake_work --rm -it alpine
 
-apk add g++ cmake make
+apk add git g++ cmake make
 cd /cmake_work
 ```
 
