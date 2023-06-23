@@ -17,6 +17,7 @@ On your computer, you need to have:
 * `cmake` (Version 3.15 or newer). See the [instructions here][CMake Instructions].
 * A C++ compiler - system default is fine.
 * `make` or `ninja` (unless you are using Xcode/MSVC)
+* `gdb` (required for [episode 8 on debugging]({{ page.root }}/08-debugging/))
 
 ## [Docker][] based setup
 
@@ -33,7 +34,7 @@ A quick and minimal docker:
 
 ```bash
 docker run --rm -it alpine
-apk add git g++ cmake make
+apk add git g++ cmake make gdb
 git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
 cd hsf-training-cmake-webpage
 ```
@@ -51,7 +52,7 @@ git clone https://github.com/hsf-training/hsf-training-cmake-webpage.git
 cd hsf-training-cmake-webpage
 docker run -v $PWD:/cmake_work --rm -it alpine
 
-apk add git g++ cmake make
+apk add git g++ cmake make gdb
 cd /cmake_work
 ```
 
