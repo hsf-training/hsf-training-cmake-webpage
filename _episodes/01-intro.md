@@ -17,7 +17,7 @@ keypoints:
 Building code is hard. You need long commands to build each part of your code; and you need do to
 this on many parts of your code.
 
-So people came up with **Build Systems**; these had ways set up dependencies (such as file A needs
+So people came up with **Build Systems**; these had ways to set up dependencies (such as file A needs
 to be built to build file B), and ways to store the commands used to build each file or type of
 file. These are language independent (mostly), allowing you to setup builds of almost anything; you
 can use `make` to build LaTeX documents if you wish. Some common build systems include make (the
@@ -33,13 +33,13 @@ However, this is:
 
 Enter **Build System Generators** (hereby labeled BSGs for brevity). These understand the concepts
 of your programming language build; they usually support common compilers, languages, libraries, and
-output formats. These usually write a build system (or IDE) file and then let that do the actually
+output formats. These usually write a build system (or IDE) file and then let that do the actual
 build. The most popular BSG is CMake, which stands for Cross-platform Make. But as we've just shown,
 it is not really in the same category as make. Other BSGs include Autotools (old, inflexible), Bazel
 (by Google), SCons (older Python system), Meson (young Python system, very opinionated), and a few
 others. But CMake has unparalleled support by IDEs, libraries, and compilers.  It also scales very
 well, with small projects able to pick it up easily (modern CMake, anyway), and massive projects
- like the CERN experiments being about to use it for thousands of modules.
+ like the CERN experiments being able to use it for thousands of modules.
 
 <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2674_RC03/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"/m/0cxh7f","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/g/11cmy51gz6","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/g/11bzyq50jp","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/m/0170rr","geo":"US","time":"2004-01-01 2021-10-18"},{"keyword":"/m/04dl04","geo":"US","time":"2004-01-01 2021-10-18"}],"category":0,"property":""}, {"exploreQuery":"date=all&geo=US&q=%2Fm%2F0cxh7f,%2Fg%2F11cmy51gz6,%2Fg%2F11bzyq50jp,%2Fm%2F0170rr,%2Fm%2F04dl04","guestPath":"https://trends.google.com:443/trends/embed/"}); </script>
 
