@@ -79,6 +79,6 @@ the cost of more lines of code.
 > * Based on [Modern CMake basics/functions][]
 {:.checklist}
 
-[Modern CMake basics/functions]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/functions.html]
+[Modern CMake basics/functions]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/functions.html
 
 {% include links.md %}
