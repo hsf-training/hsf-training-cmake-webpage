@@ -1,0 +1,6 @@
+# Known broken links, left for the lesson maintainers to decide on
+# (see hsf-training/hsf-training-ai-maintenance#4).
+# Blog post in _includes/showlinks.md is gone (only on the Wayback Machine).
+https://pabloariasal\.github\.io/2018/02/19/its-time-to-do-cmake-right/
+# Dead domain in the Carpentries boilerplate _includes/links.md (unused link definition).
+http://jekyll-windows\.juthilo\.com/
