@@ -72,7 +72,7 @@ design for newer CMake. No one likes writing or debugging build systems. Using a
 cut your build system code in less than half, reduce bugs, integrate better with external
 dependents, and more. Installing CMake can be as little as one line, and doesn't require sudo
 access. [See more info
-here](https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html).
+here](https://cliutils.gitlab.io/modern-cmake/installing).
 
 Somehow, this is difficult to understand, so I'll shout it to make it clearer. **Writing Modern
 CMake reduces your chances of build problems**. The tools CMake provides are _better_ than the ones

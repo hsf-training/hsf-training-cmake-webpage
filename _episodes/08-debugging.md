@@ -62,7 +62,7 @@ echoed to the screen when it is run, letting you follow exactly what is happenin
 options as well, but they tend to bury you in output.
 
 > ## Watching a build
-> Let's try this out. Let's go to the [`code/04-debug`]() folder and configure with trace mode on:
+> Let's try this out. Let's go to the `code/04-debug` folder and configure with trace mode on:
 >
 > ```bash
 > cmake -S . -B build --trace-source=CMakeLists.txt
@@ -156,7 +156,7 @@ Keep running continue (`c`). Do you find the problem in the code?
 
 
 Note that CMake defaults to an "empty" build type, which is neither optimized nor debug. You can
-[fix this manually](https://cliutils.gitlab.io/modern-cmake/chapters/features.html), or always
+[fix this manually](https://cliutils.gitlab.io/modern-cmake/features), or always
 specify a build type.
 
 Adopting a convention from Linux, all build types append compiler flags from the environment variables [`CFLAGS`][], [`CXXFLAGS`][], [`CUDAFLAGS`][], and [`LDFLAGS`][] ([full list](https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html#id4)). This feature is often used by package management software, in conjunction with the already mentioned [`CC`][], [`CXX`][], [`CUDACXX`][], and [`CUDAHOSTCXX`][] environment variables. Otherwise, you can set the release and debug flags separately.

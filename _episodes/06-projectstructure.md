@@ -127,7 +127,7 @@ Feel free to look at `docs` and `tests` for their `CMakeLists.txt`.
 {:.checklist}
 
 
-[Modern CMake basics/structure]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/structure.html
+[Modern CMake basics/structure]: https://cliutils.gitlab.io/modern-cmake/structure
 
 
 [`code/03-structure`]: {{ site.baseurl }}/code/03-structure

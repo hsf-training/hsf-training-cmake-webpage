@@ -1,15 +1,15 @@
 {% include base_path.html %}
 [Modern CMake]: https://cliutils.gitlab.io/modern-cmake/
-[CMake Instructions]: https://cliutils.gitlab.io/modern-cmake/chapters/intro/installing.html
+[CMake Instructions]: https://cliutils.gitlab.io/modern-cmake/installing
 [Docker]: https://www.docker.com/
 [IRIS-HEP]: https://iris-hep.org
 [FIRST-HEP]: http://first-hep.org
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
 [ci]: http://communityin.org/
-[coc-reporting]: https://docs.carpentries.org/topic_folders/policies/incident-reporting.html
+[coc-reporting]: https://docs.carpentries.org/policies/coc/incident-reporting.html
 [coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
-[concept-maps]: https://carpentries.github.io/instructor-training/05-memory/
+[concept-maps]: https://carpentries.github.io/instructor-training/05-memory.html
 [contrib-covenant]: https://contributor-covenant.org/
 [contributing]: {{ repo_url }}/blob/{{ source_branch }}/CONTRIBUTING.md
 [cran-checkpoint]: https://cran.r-project.org/package=checkpoint
@@ -17,7 +17,7 @@
 [cran-stringr]: https://cran.r-project.org/package=stringr
 [dc-lessons]: http://www.datacarpentry.org/lessons/
 [email]: mailto:team@carpentries.org
-[github-importer]: https://import.github.com/
+[github-importer]: https://github.com/new/import
 [importer]: https://github.com/new/import
 [jekyll-collection]: https://jekyllrb.com/docs/collections/
 [jekyll-install]: https://jekyllrb.com/docs/installation/

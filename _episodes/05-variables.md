@@ -155,4 +155,4 @@ classic rule of CMake was "never glob"; the new rule is "never glob, but if you 
 
 {% include cmake_links.md %}
 
-[Modern CMake basics/variables]: https://cliutils.gitlab.io/modern-cmake/chapters/basics/variables.html
+[Modern CMake basics/variables]: https://cliutils.gitlab.io/modern-cmake/variables
