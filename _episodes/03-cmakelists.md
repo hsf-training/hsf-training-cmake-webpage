@@ -97,4 +97,4 @@ cd hsf-training-cmake-webpage/code/00-intro
 
 {% include cmake_links.md %}
 
-[Modern CMake Basics]: https://cliutils.gitlab.io/modern-cmake/chapters/basics.html
+[Modern CMake Basics]: https://cliutils.gitlab.io/modern-cmake/basics

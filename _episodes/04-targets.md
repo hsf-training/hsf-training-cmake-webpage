@@ -199,4 +199,4 @@ libraries from other places, and will not be making your own.
 {% include cmake_links.md %}
 
 
-[Modern CMake Basics]: https://cliutils.gitlab.io/modern-cmake/chapters/basics.html
+[Modern CMake Basics]: https://cliutils.gitlab.io/modern-cmake/basics
