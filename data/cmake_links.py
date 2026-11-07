@@ -22,7 +22,7 @@ lang = "<LANG>"
 langs = ["CXX"]
 
 for page in pages:
-    res = requests.get(page)
+    res = requests.get(page, timeout=30)
 
     soup = BeautifulSoup(res.content, "lxml")
 
